@@ -13,10 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const mongoURI = encodeURIComponent(process.env.MONGO_URI);
+// const mongoPassword = encodeURIComponent(<string>process.env.MONGODB_PASSWORD);
+// const mongoPassword = encodeURIComponent(<string>process.env.MONGODB_PASSWORD);
+// const mongoUsername = encodeURIComponent(<string>process.env.MONGODB_USER);
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(`mongodb+srv://${mongoURI}`);
+        yield mongoose_1.default.connect(`mongodb+srv://coderaiders5:${process.env.MONGODB_PASSWORD}@recipe-roulette.hpufv49.mongodb.net/?retryWrites=true&w=majority`);
         console.log("Database is connected");
     }
     catch (err) {
