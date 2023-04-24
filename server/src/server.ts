@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
 // const mongoURI = encodeURIComponent(<string>process.env.MONGO_URI);
 
-mongoose.connect(process.env.MONGODB_URI!, {
+mongoose.connect(<string>process.env.MONGODB_URI!, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 } as ConnectOptions)
