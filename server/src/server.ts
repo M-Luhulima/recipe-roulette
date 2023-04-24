@@ -4,6 +4,7 @@ import cors from 'cors';
 // import scheduleRoutes from './routes/schedule';
 import { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
+import connectDB from "../database/connection";
 
 dotenv.config();
 
@@ -18,16 +19,19 @@ app.use((req, res, next) => {
 
 // app.use('/api/schedule', scheduleRoutes);
 
-mongoose.connect(process.env.MONGODB_URI!, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-} as ConnectOptions)
-  .then(() => {
-    const port = process.env.PORT || 4000;
-    app.listen(port, () => {
-      console.log(`Connected to DB and listening on port ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// Connect to the database
+connectDB();
+
+// mongoose.connect(process.env.MONGODB_URI!, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// } as ConnectOptions)
+//   .then(() => {
+//     const port = process.env.PORT || 4000;
+//     app.listen(port, () => {
+//       console.log(`Connected to DB and listening on port ${port}`);
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
