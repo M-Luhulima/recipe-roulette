@@ -1,4 +1,7 @@
 // API call 1 random recipe
+interface Recipe {
+  // Define the recipe object properties here
+}
 export const getRandomRecipe = async (): Promise<void | {}> => {
   return await fetch(
     `https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`
@@ -24,3 +27,5 @@ export const getRecipes = async (): Promise<void | {}> => {
     });
 };
 // https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
+
+
