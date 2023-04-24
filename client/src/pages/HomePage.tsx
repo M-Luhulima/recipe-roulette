@@ -3,32 +3,17 @@ import { Link } from "react-router-dom";
 // import { useTasksContext } from "../hooks/useTasksContext";
 
 const HomePage= () => {
-return (
-  <div>hallo </div>
-)
+  return (
+    <div className="HomePage">
+      <h1>Hungry??</h1>
+      <Link className="link-questions" to="/quiz">
+        <button className="button HomePage__button">Start quiz</button>
+      </Link>
+      <Link to="/results">
+      <button className="button HomePage__button">Get random recipe</button>
+      </Link>
+    </div>
+  );
 }
-
-
-//   const { tasks } = useTasksContext();
-
-//   return (
-//     <div className="user-profile">
-//       <h1>Daddy's Babbies</h1>
-//       <Link className="link-babyProfile" to="/">
-//         <button className="goToBabyBtn">Go to Baby Anna Profile</button>
-//       </Link>
-//       <div className="user-tasks">
-//         {tasks?.map((task) => (
-//           <TaskDetails
-//             task={task}
-//             key={task._id}
-//             showDeleteButton={false}
-//             showCheckBox={true}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
 
 export default HomePage;
