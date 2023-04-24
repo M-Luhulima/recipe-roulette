@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 // app.use('/api/schedule', scheduleRoutes);
 // Connect to the database
 // connectDB();
+// const mongoURI = encodeURIComponent(<string>process.env.MONGO_URI);
 mongoose_1.default.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

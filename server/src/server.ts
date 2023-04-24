@@ -22,6 +22,8 @@ app.use((req, res, next) => {
 // Connect to the database
 // connectDB();
 
+// const mongoURI = encodeURIComponent(<string>process.env.MONGO_URI);
+
 mongoose.connect(process.env.MONGODB_URI!, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
