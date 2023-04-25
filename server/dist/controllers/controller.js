@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getQuizRecipes = exports.getRandomRecipe = void 0;
+exports.getQuizRecipes = exports.getRandomRecipe = exports.getRandomRecipeWithoutTryCatch = void 0;
 // import mongoose from "mongoose";
 // // import Task, { ITask } from "../models/taskSchema";
 const spoonAPI_1 = require("../API/spoonAPI");
@@ -88,21 +88,36 @@ const spoonAPI_1 = require("../API/spoonAPI");
 //   return res.status(200).json(task);
 // };
 // // export { getTasks, getTask, createTask, deleteTask, updateTask };
-const getRandomRecipe = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // handling
+// example without
+const getRandomRecipeWithoutTryCatch = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const randomRecipe = yield (0, spoonAPI_1.getRandomRecipeFromApi)();
     console.log('randomRecipe: ', randomRecipe);
-    // output
     res.json(randomRecipe);
 });
+exports.getRandomRecipeWithoutTryCatch = getRandomRecipeWithoutTryCatch;
+// example with
+const getRandomRecipe = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const randomRecipe = yield (0, spoonAPI_1.getRandomRecipeFromApi)();
+        console.log('randomRecipe: ', randomRecipe);
+        res.json(randomRecipe);
+    }
+    catch (error) {
+        console.error('getRandomRecipe error: ', error);
+        res.status(500).json({ message: 'api call failed' });
+    }
+});
 exports.getRandomRecipe = getRandomRecipe;
+// next up: redux -> store -> axios api call -> localhost/api/quiz-recipe
 const getQuizRecipes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { type, diet, intolerances, maxReadyTime, cuisine } = req.query;
-    // validation
-    if (!maxReadyTime || !cuisine || !diet || !intolerances || !type) {
-        res.status(400).json({ message: 'incorrect query params' });
+    try {
+        const quizRecipes = yield (0, spoonAPI_1.getQuizRecipesFromApi)(type, diet, intolerances, Number(maxReadyTime), cuisine);
+        res.json(quizRecipes);
     }
-    const quizRecipes = yield (0, spoonAPI_1.getQuizRecipesFromApi)(type, diet, intolerances, Number(maxReadyTime), cuisine);
-    res.json(quizRecipes);
+    catch (error) {
+        console.error('getQuizRecipes error: ', error);
+        res.status(500).json({ message: 'api call failed' });
+    }
 });
 exports.getQuizRecipes = getQuizRecipes;

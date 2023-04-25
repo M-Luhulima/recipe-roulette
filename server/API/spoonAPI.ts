@@ -66,14 +66,14 @@ export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
   console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
   const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
   console.log(response.data);
-  console.log("hellllllllllo"); // Add this line to check if data is being returned
+  console.log("getRandomRecipeFromApi"); // Add this line to check if data is being returned
   return response.data.recipes[0];
 };
 
-// API call 3 recipes after quiz > NOG MAKEN
+// API call 3 recipes after quiz
 export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
   console.log(response.data);
-  console.log("hellllllllllo"); // Add this line to check if data is being returned
+  console.log("getQuizRecipesFromApi"); // Add this line to check if data is being returned
   return response.data.recipes;
 };

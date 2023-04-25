@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Recipe } from "../models/types";
-import getRandomRecipe from "../"
+// import getRandomRecipe from "../"
 // import TaskDetails from "../components/TaskDetails";
 // import { useTasksContext } from "../hooks/useTasksContext";
 
@@ -18,10 +18,10 @@ const HomePage: FC = () => {
   }
 
   const handleRandom = async () => {
-    const newRecipe = await getRandomRecipe();
-    console.log('newRecipe: ', newRecipe);
-    setRandomRecipe(newRecipe);
-    navigate(`/results`);
+    // const newRecipe = await getRandomRecipe();
+    console.log('newRecipe: '); //, newRecipe);
+    // setRandomRecipe(newRecipe);
+    // navigate(`/results`);
   };
 
   return (

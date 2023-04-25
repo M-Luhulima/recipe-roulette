@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Recipe } from "../utils/spoonApi";
+import { Recipe } from "../models/types";
 import "../index.css";
 
 const Results = () => {

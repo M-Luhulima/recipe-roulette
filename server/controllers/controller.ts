@@ -100,21 +100,35 @@ import { getRandomRecipeFromApi, getQuizRecipesFromApi } from "../API/spoonAPI"
 // // export { getTasks, getTask, createTask, deleteTask, updateTask };
 
 
-export const getRandomRecipe = async (_req: Request, res: Response) => {
-   // handling
-   const randomRecipe = await getRandomRecipeFromApi();
-   console.log('randomRecipe: ', randomRecipe);
-   // output
-   res.json(randomRecipe);
+// example without
+export const getRandomRecipeWithoutTryCatch = async (_req: Request, res: Response) => {
+    const randomRecipe = await getRandomRecipeFromApi();
+    console.log('randomRecipe: ', randomRecipe);
+
+    res.json(randomRecipe);
 }
 
-export const getQuizRecipes = async (req: Request, res: Response) => {
-    const {type, diet, intolerances, maxReadyTime, cuisine} = req.query;
-    
-    // validation
-    if (!maxReadyTime || !cuisine || !diet || !intolerances || !type) {
-        res.status(400).json({message: 'incorrect query params'});
+// example with
+export const getRandomRecipe = async (_req: Request, res: Response) => {
+    try {
+        const randomRecipe = await getRandomRecipeFromApi();
+        console.log('randomRecipe: ', randomRecipe);
+
+        res.json(randomRecipe);
+    } catch (error) {
+        console.error('getRandomRecipe error: ', error);
+        res.status(500).json({ message: 'api call failed' })
     }
-    const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
-    res.json(quizRecipes)
-  }
+}
+// next up: redux -> store -> axios api call -> localhost/api/quiz-recipe
+export const getQuizRecipes = async (req: Request, res: Response) => {
+    const { type, diet, intolerances, maxReadyTime, cuisine } = req.query;
+
+    try {
+        const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
+        res.json(quizRecipes);
+    } catch (error) {
+        console.error('getQuizRecipes error: ', error);
+        res.status(500).json({ message: 'api call failed' })
+    }
+}

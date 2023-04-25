@@ -19,15 +19,15 @@ const getRandomRecipeFromApi = () => __awaiter(void 0, void 0, void 0, function*
     console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
     console.log(response.data);
-    console.log("hellllllllllo"); // Add this line to check if data is being returned
+    console.log("getRandomRecipeFromApi"); // Add this line to check if data is being returned
     return response.data.recipes[0];
 });
 exports.getRandomRecipeFromApi = getRandomRecipeFromApi;
-// API call 3 recipes after quiz > NOG MAKEN
+// API call 3 recipes after quiz
 const getQuizRecipesFromApi = (type, diet, intolerances, maxReadyTime, cuisine) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
     console.log(response.data);
-    console.log("hellllllllllo"); // Add this line to check if data is being returned
+    console.log("getQuizRecipesFromApi"); // Add this line to check if data is being returned
     return response.data.recipes;
 });
 exports.getQuizRecipesFromApi = getQuizRecipesFromApi;
