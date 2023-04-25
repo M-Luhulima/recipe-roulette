@@ -16,7 +16,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api", publicRoutes);
-app.use("/api/user", privateRoutes);
+// app.use("/api/user", privateRoutes);
 
 app.listen(port, () => {
   console.log(`Server connected to http://localhost:${port}`);
