@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getRandomRecipe, Recipe } from "../utils/spoonApi";
+import { Recipe } from "../models/types";
+import getRandomRecipe from "../"
 // import TaskDetails from "../components/TaskDetails";
 // import { useTasksContext } from "../hooks/useTasksContext";
 

@@ -1,6 +1,8 @@
-// import { Request, Response } from "express";
+import { Request, Response } from "express";
 // import mongoose from "mongoose";
 // // import Task, { ITask } from "../models/taskSchema";
+
+import { getRandomRecipeFromApi, getQuizRecipesFromApi } from "../API/spoonAPI"
 
 
 // // GET all tasks //fix type error
@@ -96,3 +98,23 @@
 
 
 // // export { getTasks, getTask, createTask, deleteTask, updateTask };
+
+
+export const getRandomRecipe = async (_req: Request, res: Response) => {
+   // handling
+   const randomRecipe = await getRandomRecipeFromApi();
+   console.log('randomRecipe: ', randomRecipe);
+   // output
+   res.json(randomRecipe);
+}
+
+export const getQuizRecipes = async (req: Request, res: Response) => {
+    const {type, diet, intolerances, maxReadyTime, cuisine} = req.query;
+    
+    // validation
+    if (!maxReadyTime || !cuisine || !diet || !intolerances || !type) {
+        res.status(400).json({message: 'incorrect query params'});
+    }
+    const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
+    res.json(quizRecipes)
+  }

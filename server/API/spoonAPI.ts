@@ -1,4 +1,5 @@
-// API call 1 random recipe
+import axios from 'axios';
+
 export interface Recipe {
   id: number;
   title: string;
@@ -60,31 +61,19 @@ export interface Recipe {
   }[];
 }
 
-export const getRandomRecipe = async (): Promise<Recipe> => {
-  console.log('REACT_APP_SPOONACULAR_API: ', process.env.REACT_APP_SPOONACULAR_API);
-  return fetch(
-    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_API}&number=1`
-  )
-    .then((data) => data.json())
-    .then((list) => {
-      console.log(list);
-      console.log("hellllllllllo"); // Add this line to check if data is being returned
-      return list.recipes[0];
-    });
+// API call 1 random recipe
+export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
+  console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
+  const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
+  console.log(response.data);
+  console.log("hellllllllllo"); // Add this line to check if data is being returned
+  return response.data.recipes[0];
 };
 
 // API call 3 recipes after quiz > NOG MAKEN
-export const getRecipes = async (): Promise<Recipe[]> => {
-  return fetch(
-    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOONACULAR_API}&number=3`
-  )
-    .then((data) => data.json())
-    .then((list) => {
-      console.log(list);
-      console.log("hellllllllllo"); // Add this line to check if data is being returned
-      return list.recipes;
-    });
+export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
+  const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
+  console.log(response.data);
+  console.log("hellllllllllo"); // Add this line to check if data is being returned
+  return response.data.recipes;
 };
-// https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2
-
-
