@@ -1,13 +1,13 @@
 import * as React from "react";
-import { getRandomRecipe, getRecipes } from "../utils/spoonApi";
+import { Recipe } from "../utils/spoonApi";
 import "../index.css";
 
-type recipeBlockProps = {
-  id: string;
-};
-
 const Results = () => {
-  return <div> results </div>;
+  const [randomRecipe] = React.useState<Recipe>();
+
+  return <div>
+     results: {randomRecipe ? randomRecipe.title : 'not found'}
+  </div>;
 };
 
 export default Results;

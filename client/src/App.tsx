@@ -8,20 +8,18 @@ import MyPage from "./pages/MyPage";
 
 const App = (): JSX.Element => {
   return (
-    <div className="App">
+    <main className="App">
       <BrowserRouter>
         <Header />
-        <div className="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/results" element={<Results />} />
             <Route path="/mypage" element={<MyPage />} />
           </Routes>
-        </div>
         <Footer />
       </BrowserRouter>
-    </div>
+    </main>
   );
 };
 
