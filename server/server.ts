@@ -18,6 +18,10 @@ connectDB();
 app.use("/api", publicRoutes);
 // app.use("/api/user", privateRoutes);
 
+app.get("/", (_req, res) => {
+  res.send("Hello World!");
+});
+
 app.listen(port, () => {
   console.log(`Server connected to http://localhost:${port}`);
 });
