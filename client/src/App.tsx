@@ -26,6 +26,7 @@ const App = (): JSX.Element => {
 export default App;
 
 
+
 //////////login, signup toevoegingen//////////////
 
 //import Login from './pages/Login'

@@ -122,10 +122,12 @@ export const getRandomRecipe = async (_req: Request, res: Response) => {
 }
 // next up: redux -> store -> axios api call -> localhost/api/quiz-recipe
 export const getQuizRecipes = async (req: Request, res: Response) => {
-    const { type, diet, intolerances, maxReadyTime, cuisine } = req.query;
+    const { type, diet, intolerances, cuisine } = req.query;
+    // const { type, diet, intolerances, maxReadyTime, cuisine } = req.query;
 
     try {
-        const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
+        // const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
+        const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, cuisine as string);
         res.json(quizRecipes);
     } catch (error) {
         console.error('getQuizRecipes error: ', error);

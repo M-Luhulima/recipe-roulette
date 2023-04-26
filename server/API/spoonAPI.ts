@@ -71,9 +71,29 @@ export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
 };
 
 // API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
-export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
-  const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
+// export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
+  export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<Recipe[]> => {
+  // const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}/&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
+  const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&cuisine=${cuisine}&number=1`);
   console.log(response.data);
   console.log("getQuizRecipesFromApi"); // Add this line to check if data is being returned
   return response.data.recipes;
 };
+// MORGEN DIT CHECKEN WANT WE HEBBEN TE VEEL GEKLIKT VANDAAG 💩
+
+// export const getQuizRecipesFromApi = async (
+//   type?: string,
+//   diet?: string,
+//   intolerances?: string,
+//   cuisine?: string,
+//   maxReadyTime?: number,
+// ): Promise<Recipe[]> => {
+//     let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&cuisine=${cuisine}&number=3`;
+//   if (maxReadyTime !== undefined && maxReadyTime !== null && !isNaN(maxReadyTime)) {
+//     url += `&maxReadyTime=${maxReadyTime}`;
+//   }
+//   const response = await axios.get(url);
+//   console.log(response.data);
+//   console.log("getQuizRecipesFromApi");
+//   return response.data.recipes;
+// };
