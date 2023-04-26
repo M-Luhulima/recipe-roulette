@@ -3,5 +3,5 @@
 
 
 ## deployed on Render
-client: https://recipe-roulette-client.onrender.com/
-server: https://recipe-roulette-server.onrender.com/
+client: https://recipe-roulette-client.onrender.com/ \
+server: https://recipe-roulette-server.onrender.com/ \

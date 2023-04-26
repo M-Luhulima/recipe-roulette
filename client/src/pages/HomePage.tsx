@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { Recipe } from "../models/types";
+import { getRecipeRandom } from "../store/reducers/recipesReducer";
+import { AppDispatch, useRecipeDispatch } from "../store/store";
 // import getRandomRecipe from "../"
 // import TaskDetails from "../components/TaskDetails";
 // import { useTasksContext } from "../hooks/useTasksContext";
@@ -12,7 +13,7 @@ import { Recipe } from "../models/types";
 
 const HomePage: FC = () => {
   const navigate = useNavigate();
-  const [randomRecipe, setRandomRecipe] = useState<Recipe>();
+  const dispatch: AppDispatch = useRecipeDispatch()
   const handleStart = () => {
     console.log('handleStart')
   }
@@ -21,13 +22,13 @@ const HomePage: FC = () => {
     // const newRecipe = await getRandomRecipe();
     console.log('newRecipe: '); //, newRecipe);
     // setRandomRecipe(newRecipe);
-    // navigate(`/results`);
+    dispatch(getRecipeRandom());
+    navigate(`/results`);
   };
 
   return (
     <div className="HomePage">
       <h1>Hungry??</h1>
-
         <button className="button HomePage__button" onClick={handleStart}>
           Start quiz
         </button>

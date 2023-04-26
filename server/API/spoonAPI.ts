@@ -70,7 +70,7 @@ export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
   return response.data.recipes[0];
 };
 
-// API call 3 recipes after quiz
+// API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
 export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
   console.log(response.data);

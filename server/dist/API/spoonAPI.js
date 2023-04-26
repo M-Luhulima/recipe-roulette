@@ -23,7 +23,7 @@ const getRandomRecipeFromApi = () => __awaiter(void 0, void 0, void 0, function*
     return response.data.recipes[0];
 });
 exports.getRandomRecipeFromApi = getRandomRecipeFromApi;
-// API call 3 recipes after quiz
+// API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
 const getQuizRecipesFromApi = (type, diet, intolerances, maxReadyTime, cuisine) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
     console.log(response.data);

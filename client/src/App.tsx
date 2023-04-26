@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import MyPage from "./pages/MyPage";
-import Users from './components/users'
 
 const App = (): JSX.Element => {
   return (
@@ -18,7 +17,6 @@ const App = (): JSX.Element => {
             <Route path="/results" element={<Results />} />
             <Route path="/mypage" element={<MyPage />} />
           </Routes>
-          <Users/>
         <Footer />
       </BrowserRouter>
     </main>
@@ -26,3 +24,14 @@ const App = (): JSX.Element => {
 };
 
 export default App;
+
+
+//////////login, signup toevoegingen//////////////
+
+//import Login from './pages/Login'
+//import Signup from './pages/Signup'
+
+            /*  <Route path="/login" element={<login />} /> */
+            /* <Route path="/signup" element={<signup />} /> */
+
+/////////////////////////////////////////////////////            

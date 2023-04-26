@@ -1,19 +1,13 @@
-import * as React from "react";
-import { Recipe } from "../models/types";
+import Recipes from "../components/recipes";
 import "../index.css";
 
-const Results = () => {
-  const [randomRecipe] = React.useState<Recipe>();
-
+const Results = () => { 
   return <div>
-     results: {randomRecipe ? randomRecipe.title : 'not found'}
+    <Recipes />
   </div>;
 };
 
 export default Results;
-
-
-
 
 // type videoBlockProps = {
 //   id: string;

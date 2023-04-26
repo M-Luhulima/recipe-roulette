@@ -1,6 +1,13 @@
 import { combineReducers } from 'redux'
-import userReducer from './usersReducer'
+import {recipeReducer} from './recipesReducer'
 
 export default combineReducers({
-  users: userReducer
+  recipes: recipeReducer
 })
+
+// import { combineReducers } from 'redux'
+// import userReducer from './usersReducer'
+
+// export default combineReducers({
+//   users: userReducer
+// })
