@@ -115,6 +115,7 @@ const getQuizRecipes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         // const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
         const quizRecipes = yield (0, spoonAPI_1.getQuizRecipesFromApi)(type, diet, intolerances, cuisine);
+        console.log('quizRecipes: ', quizRecipes);
         res.json(quizRecipes);
     }
     catch (error) {

@@ -128,6 +128,8 @@ export const getQuizRecipes = async (req: Request, res: Response) => {
     try {
         // const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
         const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, cuisine as string);
+        console.log('quizRecipes: ', quizRecipes);
+
         res.json(quizRecipes);
     } catch (error) {
         console.error('getQuizRecipes error: ', error);

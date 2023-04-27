@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import {recipeReducer} from './recipesReducer'
 
 export default combineReducers({
-  recipes: recipeReducer
+  recipes: recipeReducer,
 })
 
 // import { combineReducers } from 'redux'
@@ -11,3 +11,4 @@ export default combineReducers({
 // export default combineReducers({
 //   users: userReducer
 // })
+

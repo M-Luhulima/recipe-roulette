@@ -24,16 +24,95 @@ const getRandomRecipeFromApi = () => __awaiter(void 0, void 0, void 0, function*
 });
 exports.getRandomRecipeFromApi = getRandomRecipeFromApi;
 // API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
-// export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, maxReadyTime?: number, cuisine?: string): Promise<Recipe[]> => {
+const mockResult = {
+    results: [
+        {
+            id: 715497,
+            title: 'Berry Banana Breakfast Smoothie',
+            image: 'https://spoonacular.com/recipeImages/715497-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 716432,
+            title: 'Finger Foods: Frittata Muffins',
+            image: 'https://spoonacular.com/recipeImages/716432-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 716276,
+            title: 'Doughnuts',
+            image: 'https://spoonacular.com/recipeImages/716276-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 782619,
+            title: 'Mushroom Goat Cheese Baked Eggs',
+            image: 'https://spoonacular.com/recipeImages/782619-312x231.png',
+            imageType: 'png'
+        },
+        {
+            id: 655219,
+            title: 'Peanut Butter And Chocolate Oatmeal',
+            image: 'https://spoonacular.com/recipeImages/655219-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 645032,
+            title: 'Goldilocks Chia Seed Porridge',
+            image: 'https://spoonacular.com/recipeImages/645032-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 655186,
+            title: 'Peaches And Cream Oatmeal',
+            image: 'https://spoonacular.com/recipeImages/655186-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 656481,
+            title: 'Poached Egg With Spinach and Tomato',
+            image: 'https://spoonacular.com/recipeImages/656481-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 638604,
+            title: 'Chilled Swiss Oatmeal',
+            image: 'https://spoonacular.com/recipeImages/638604-312x231.jpg',
+            imageType: 'jpg'
+        },
+        {
+            id: 647043,
+            title: 'Homemade Muesli Breakfast Cereal',
+            image: 'https://spoonacular.com/recipeImages/647043-312x231.jpg',
+            imageType: 'jpg'
+        }
+    ],
+    offset: 0,
+    number: 10,
+    totalResults: 274
+};
+//   export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<Recipe[]> => {
+//   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
+//     params: {
+//       apiKey: process.env.SPOONACULAR_API,
+//       maxReadyTime: 900,
+//       intolerances,
+//       number: 1,
+//       cuisine,
+//       type,
+//       diet,
+//     }
+//   });
+// TODO: add api call to https://api.spoonacular.com/recipes/{id}/information
+//   console.log('getQuizRecipesFromApi: ', response.data);
+//   return response.data.results;
+// };
 const getQuizRecipesFromApi = (type, diet, intolerances, cuisine) => __awaiter(void 0, void 0, void 0, function* () {
-    // const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}/&maxReadyTime=${maxReadyTime}&cuisine=${cuisine}&number=3`);
-    const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.SPOONACULAR_API}&type=${type}&diet=${diet}&intolerances=${intolerances}&cuisine=${cuisine}&number=1`);
-    console.log(response.data);
-    console.log("getQuizRecipesFromApi"); // Add this line to check if data is being returned
-    return response.data.recipes;
+    const random = mockResult.results[Math.floor(Math.random() * mockResult.results.length)];
+    return [random];
 });
 exports.getQuizRecipesFromApi = getQuizRecipesFromApi;
-// MORGEN DIT CHECKEN WANT WE HEBBEN TE VEEL GEKLIKT VANDAAG 💩
+// https://api.spoonacular.com/recipes/complexSearch?apiKey=5370b60f2c82426f98d20e49ac93e783&type=&diet=&intolerances=&cuisine=&number=1
 // export const getQuizRecipesFromApi = async (
 //   type?: string,
 //   diet?: string,
