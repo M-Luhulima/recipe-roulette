@@ -69,7 +69,7 @@ export interface RecipeInformation {
 }
 
 // API call 1 random recipe
-export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
+export const getRandomRecipeFromApi2 = async (): Promise<Recipe> => {
   console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
   const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
   console.log(response.data);
@@ -78,93 +78,139 @@ export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
 };
 
 // API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
-const mockResult = {
-  results: [
-    {
-      id: 715497,
-      title: 'Berry Banana Breakfast Smoothie',
-      image: 'https://spoonacular.com/recipeImages/715497-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 716432,
-      title: 'Finger Foods: Frittata Muffins',
-      image: 'https://spoonacular.com/recipeImages/716432-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 716276,
-      title: 'Doughnuts',
-      image: 'https://spoonacular.com/recipeImages/716276-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 782619,
-      title: 'Mushroom Goat Cheese Baked Eggs',
-      image: 'https://spoonacular.com/recipeImages/782619-312x231.png',
-      imageType: 'png'
-    },
-    {
-      id: 655219,
-      title: 'Peanut Butter And Chocolate Oatmeal',
-      image: 'https://spoonacular.com/recipeImages/655219-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 645032,
-      title: 'Goldilocks Chia Seed Porridge',
-      image: 'https://spoonacular.com/recipeImages/645032-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 655186,
-      title: 'Peaches And Cream Oatmeal',
-      image: 'https://spoonacular.com/recipeImages/655186-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 656481,
-      title: 'Poached Egg With Spinach and Tomato',
-      image: 'https://spoonacular.com/recipeImages/656481-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 638604,
-      title: 'Chilled Swiss Oatmeal',
-      image: 'https://spoonacular.com/recipeImages/638604-312x231.jpg',
-      imageType: 'jpg'
-    },
-    {
-      id: 647043,
-      title: 'Homemade Muesli Breakfast Cereal',
-      image: 'https://spoonacular.com/recipeImages/647043-312x231.jpg',
-      imageType: 'jpg'
+const mockResult = [
+  {
+    vegetarian: true,
+    vegan: false,
+    glutenFree: false,
+    dairyFree: false,
+    veryHealthy: true,
+    cheap: false,
+    veryPopular: true,
+    sustainable: false,
+    lowFodmap: false,
+    weightWatcherSmartPoints: 15,
+    gaps: 'no',
+    preparationMinutes: 5,
+    cookingMinutes: 0,
+    aggregateLikes: 689,
+    healthScore: 64,
+    creditsText: 'Jen West',
+    sourceName: 'Pink When',
+    pricePerServing: 206.79,
+    extendedIngredients: [[Object], [Object], [Object], [Object], [Object]],
+    id: 715497,
+    title: 'Berry Banana Breakfast Smoothie',
+    readyInMinutes: 5,
+    servings: 1,
+    sourceUrl: 'http://www.pinkwhen.com/berry-banana-breakfast-smoothie/',
+    image: 'https://spoonacular.com/recipeImages/715497-556x370.jpg',
+    imageType: 'jpg',
+    summary: 'If you want to add more <b>lacto ovo vegetarian</b> recipes to your recipe box, Berry Banana Breakfast Smoothie might be a recipe you should try. One portion of this dish contains about <b>21g of protein</b>, <b>10g of fat</b>, and a total of <b>457 calories</b>. This recipe serves 1 and costs $2.07 per serving. 689 people have tried and liked this recipe. It works well as a rather inexpensive breakfast. A mixture of banana, graham cracker crumbs, vanilla yogurt, and a handful of other ingredients are all it takes to make this recipe so yummy. From preparation to the plate, this recipe takes roughly <b>5 minutes</b>. It is brought to you by Pink When. Overall, this recipe earns a <b>super spoonacular score of 99%</b>. Similar recipes include <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1364145">Berry Banana Breakfast Smoothie</a>, <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1405583">Berry Banana Breakfast Smoothie</a>, and <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1601311">Berry Banana Breakfast Smoothie</a>.',
+    cuisines: [],
+    dishTypes: ['morning meal', 'brunch', 'beverage', 'breakfast', 'drink'],
+    diets: ['lacto ovo vegetarian'],
+    occasions: [],
+    winePairing: { pairedWines: [], pairingText: '', productMatches: [] },
+    instructions: '<p>Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.</p>',
+    analyzedInstructions: [[Object]],
+    report: 'weird picture',
+    tips: { health: [Array], price: [Array], cooking: [], green: [Array] },
+    openLicense: 2,
+    suspiciousDataScore: 0,
+    approved: 2,
+    unknownIngredients: [],
+    userTags: [],
+    originalId: null,
+    spoonacularSourceUrl: 'https://spoonacular.com/berry-banana-breakfast-smoothie-715497'
+  },
+  {
+    vegetarian: true,
+    vegan: false,
+    glutenFree: false,
+    dairyFree: false,
+    veryHealthy: true,
+    cheap: false,
+    veryPopular: true,
+    sustainable: false,
+    lowFodmap: false,
+    weightWatcherSmartPoints: 15,
+    gaps: 'no',
+    preparationMinutes: 5,
+    cookingMinutes: 0,
+    aggregateLikes: 689,
+    healthScore: 64,
+    creditsText: 'Jen West',
+    sourceName: 'Pink When',
+    pricePerServing: 206.79,
+    extendedIngredients: [[Object], [Object], [Object], [Object], [Object]],
+    id: 5646545,
+    title: 'Pizza Pollo and Piña',
+    readyInMinutes: 5,
+    servings: 1,
+    sourceUrl: 'http://www.pinkwhen.com/berry-banana-breakfast-smoothie/',
+    image: 'https://spoonacular.com/recipeImages/715497-556x370.jpg',
+    imageType: 'jpg',
+    summary: 'If you want to add more <b>lacto ovo vegetarian</b> recipes to your recipe box, Berry Banana Breakfast Smoothie might be a recipe you should try. One portion of this dish contains about <b>21g of protein</b>, <b>10g of fat</b>, and a total of <b>457 calories</b>. This recipe serves 1 and costs $2.07 per serving. 689 people have tried and liked this recipe. It works well as a rather inexpensive breakfast. A mixture of banana, graham cracker crumbs, vanilla yogurt, and a handful of other ingredients are all it takes to make this recipe so yummy. From preparation to the plate, this recipe takes roughly <b>5 minutes</b>. It is brought to you by Pink When. Overall, this recipe earns a <b>super spoonacular score of 99%</b>. Similar recipes include <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1364145">Berry Banana Breakfast Smoothie</a>, <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1405583">Berry Banana Breakfast Smoothie</a>, and <a href="https://spoonacular.com/recipes/berry-banana-breakfast-smoothie-1601311">Berry Banana Breakfast Smoothie</a>.',
+    cuisines: [],
+    dishTypes: ['morning meal', 'brunch', 'beverage', 'breakfast', 'drink'],
+    diets: ['lacto ovo vegetarian'],
+    occasions: [],
+    winePairing: { pairedWines: [], pairingText: '', productMatches: [] },
+    instructions: '<p>Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.</p>',
+    analyzedInstructions: [[Object]],
+    report: 'weird picture',
+    tips: { health: [Array], price: [Array], cooking: [], green: [Array] },
+    openLicense: 2,
+    suspiciousDataScore: 0,
+    approved: 2,
+    unknownIngredients: [],
+    userTags: [],
+    originalId: null,
+    spoonacularSourceUrl: 'https://spoonacular.com/berry-banana-breakfast-smoothie-715497'
+  }
+]
+export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<Recipe[]> => {
+  const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
+    params: {
+      apiKey: process.env.SPOONACULAR_API,
+      maxReadyTime: 900,
+      intolerances,
+      number: 1,
+      cuisine,
+      type,
+      diet,
     }
-  ],
-  offset: 0,
-  number: 10,
-  totalResults: 274
-}
-//   export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<Recipe[]> => {
-//   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
-//     params: {
-//       apiKey: process.env.SPOONACULAR_API,
-//       maxReadyTime: 900,
-//       intolerances,
-//       number: 1,
-//       cuisine,
-//       type,
-//       diet,
-//     }
-//   });
-// TODO: add api call to https://api.spoonacular.com/recipes/{id}/information
-//   console.log('getQuizRecipesFromApi: ', response.data);
-//   return response.data.results;
-// };
+  });
+  console.log('getQuizRecipesFromApi: ', response.data);
 
-  export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<RecipeInformation[]> => {
-    const random = mockResult.results[Math.floor(Math.random()*mockResult.results.length)];
-    return [random];
+  const results: RecipeInformation[] = response.data.results;
+
+  if (Array.isArray(results) && results.length > 0) {
+    // convert recipe information into recipe
+    const infoResponse = await axios.get(`https://api.spoonacular.com/recipes/informationBulk`, {
+      params: {
+        apiKey: process.env.SPOONACULAR_API,
+        ids: results.map((recipe) => recipe.id).join(','),
+      }
+    });
+    console.log('infoResponse: ', infoResponse.data);
+
+    return infoResponse.data;
+  }
+  // TODO: add api call to https://api.spoonacular.com/recipes/{id}/information
+  return [];
+};
+
+// TODO: turn off mock api response, change name at 161 to getQuizRecipesFromApi2 and change name at 128 to getQuizRecipesFromApi
+export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<RecipeInformation[]> => {
+  const random = mockResult[Math.floor(Math.random() * mockResult.length)];
+  return [random];
+};
+// also do this rename for this api
+export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
+  const random = mockResult[Math.floor(Math.random() * mockResult.length)];
+  return random as unknown as Recipe;
 };
 
 // https://api.spoonacular.com/recipes/complexSearch?apiKey=5370b60f2c82426f98d20e49ac93e783&type=&diet=&intolerances=&cuisine=&number=1
