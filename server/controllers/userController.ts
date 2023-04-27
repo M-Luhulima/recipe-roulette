@@ -1,41 +1,121 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
+import { FavoriteRecipe, IFavoriteRecipe } from '../models/schema';
 
 // add recipe to favorite list of user account
 export const createFavorites = async (req: Request, res: Response) => {
     try {
- // todo
+        const { userId, recipeId } = req.body;
+        
+        const favoriteRecipe: IFavoriteRecipe = new FavoriteRecipe({
+            userId,
+            recipeId,
+        });
+        
+        await favoriteRecipe.save();
+        
+        res.json(favoriteRecipe);
     } catch (error) {
-        console.error('getRandomRecipe error: ', error);
-        res.status(500).json({ message: 'api call failed' })
+        console.error('createFavorites error: ', error);
+        res.status(500).json({ message: 'api call failed' });
     }
-}
+};
 
 // view favorite list
 export const getFavorites = async (req: Request, res: Response) => {
     try {
- // todo
+        const { userId } = req.params;
+        
+        const favoriteRecipes = await FavoriteRecipe.find({ userId });
+        
+        res.json(favoriteRecipes);
     } catch (error) {
-        console.error('getRandomRecipe error: ', error);
-        res.status(500).json({ message: 'api call failed' })
+        console.error('getFavorites error: ', error);
+        res.status(500).json({ message: 'api call failed' });
     }
-}
+};
 
 // cooked recipe and add to cooked/review list
 export const updateFavorites = async (req: Request, res: Response) => {
     try {
- // todo
+        const { id } = req.params;
+        const { isCooked, review } = req.body;
+        
+        const favoriteRecipe = await FavoriteRecipe.findById(id);
+        
+        if (!favoriteRecipe) {
+            return res.status(404).json({ message: 'Favorite recipe not found' });
+        }
+        
+        favoriteRecipe.isCooked = isCooked;
+        favoriteRecipe.review = review;
+        
+        await favoriteRecipe.save();
+        
+        res.json(favoriteRecipe);
     } catch (error) {
-        console.error('getRandomRecipe error: ', error);
-        res.status(500).json({ message: 'api call failed' })
+        console.error('updateFavorites error: ', error);
+        res.status(500).json({ message: 'api call failed' });
     }
-}
+};
 
-// delete recipe from (wish)lists
+// delete recipe from favorite lists
 export const deleteFavorites = async (req: Request, res: Response) => {
     try {
- // todo
+      const { recipeId } = req.params;
+  
+      const favoriteRecipe = await FavoriteRecipe.findByIdAndDelete(recipeId);
+  
+      if (!favoriteRecipe) {
+        return res.status(404).json({ message: 'Favorite recipe not found' });
+      }
+  
+      res.json(favoriteRecipe);
     } catch (error) {
-        console.error('getRandomRecipe error: ', error);
-        res.status(500).json({ message: 'api call failed' })
+      console.error('deleteFavorites error: ', error);
+      res.status(500).json({ message: 'api call failed' });
     }
-}
+  };
+  
+
+// --------------------------------------------
+// import { Request, Response } from "express";
+
+// // add recipe to favorite list of user account
+// export const createFavorites = async (req: Request, res: Response) => {
+//     try {
+//  // todo
+//     } catch (error) {
+//         console.error('getRandomRecipe error: ', error);
+//         res.status(500).json({ message: 'api call failed' })
+//     }
+// }
+
+// // view favorite list
+// export const getFavorites = async (req: Request, res: Response) => {
+//     try {
+//  // todo
+//     } catch (error) {
+//         console.error('getRandomRecipe error: ', error);
+//         res.status(500).json({ message: 'api call failed' })
+//     }
+// }
+
+// // cooked recipe and add to cooked/review list
+// export const updateFavorites = async (req: Request, res: Response) => {
+//     try {
+//  // todo
+//     } catch (error) {
+//         console.error('getRandomRecipe error: ', error);
+//         res.status(500).json({ message: 'api call failed' })
+//     }
+// }
+
+// // delete recipe from (wish)lists
+// export const deleteFavorites = async (req: Request, res: Response) => {
+//     try {
+//  // todo
+//     } catch (error) {
+//         console.error('getRandomRecipe error: ', error);
+//         res.status(500).json({ message: 'api call failed' })
+//     }
+// }
