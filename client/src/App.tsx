@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -6,7 +7,7 @@ import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import MyPage from "./pages/MyPage";
 
-const App = (): JSX.Element => {
+const App: FC = () => {
   return (
     <main className="App">
       <BrowserRouter>

@@ -102,6 +102,113 @@ export const getRecipeRandom = () => {
     }
 }
 
+// Here starts getQuizRecipe
+// Define the action type constants
+enum QuizActionTypes {
+    GET_QUIZRECIPES = 'GET_QUIZRECIPES',
+    GET_QUIZRECIPES_SUCCESS = 'GET_QUIZRECIPES_SUCCESS',
+    GET_QUIZRECIPES_ERROR = 'GET_QUIZRECIPES_ERROR',
+}
+
+export interface DataState {
+    recipes: any[],
+    loading: boolean,
+    error: string | null,
+}
+
+export interface GetQuizRecipesRequestAction {
+    type: QuizActionTypes.GET_QUIZRECIPES;
+}
+
+export interface GetQuizRecipesSuccessAction {
+    type: QuizActionTypes.GET_QUIZRECIPES_SUCCESS;
+    payload: any[];
+}
+
+export interface GetQuizRecipesErrorAction {
+    type: QuizActionTypes.GET_QUIZRECIPES_ERROR;
+    payload: string;
+}
+
+export type GetQuizRecipesAction =
+    | GetQuizRecipesRequestAction
+    | GetQuizRecipesSuccessAction
+    | GetQuizRecipesErrorAction;
+
+const quizInitialState: DataState = {
+    recipes: [],
+    loading: true,
+    error: null,
+}
+
+export const quizRecipeReducer = (state = quizInitialState, action: GetQuizRecipesAction): DataState => {
+    switch (action.type) {
+        case QuizActionTypes.GET_QUIZRECIPES:
+            return {
+                ...state,
+                error: null,
+                loading: true,
+            };
+        case QuizActionTypes.GET_QUIZRECIPES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                recipes: action.payload,
+                error: null,
+            };
+        case QuizActionTypes.GET_QUIZRECIPES_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        default: return state
+    }
+}
+
+export const getQuizRecipesRequest = (): GetQuizRecipesRequestAction => {
+    return {
+        type: QuizActionTypes.GET_QUIZRECIPES
+    };
+}
+
+export const getQuizRecipesSuccess = (data: any[]): GetQuizRecipesSuccessAction => {
+    return {
+        type: QuizActionTypes.GET_QUIZRECIPES_SUCCESS,
+        payload: data,
+    };
+}
+
+export const getQuizRecipesError = (error: string): GetQuizRecipesErrorAction => {
+    return {
+        type: QuizActionTypes.GET_QUIZRECIPES_ERROR,
+        payload: error,
+    };
+}
+
+export const getQuizRecipe = () => {
+    return async (dispatch: Dispatch<GetQuizRecipesAction>) => {
+        console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
+        dispatch(getQuizRecipesRequest())
+        try {
+            const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz-recipe`, {
+                params: {
+                    type: '',
+                    diet: '',
+                    intolerances: '',
+                }
+            })
+            // store res.data in state(useState)
+            console.log('res.data', res.data)
+            dispatch(getQuizRecipesSuccess([res.data]));
+        }
+        catch (e) {
+            console.log('getRecipeRandom error ', e);
+            dispatch(getQuizRecipesError(`${e}`));
+        }
+    }
+}
+
 
 
 

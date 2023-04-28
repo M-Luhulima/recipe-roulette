@@ -75,12 +75,12 @@
 
 // export default Quiz;
 
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { quizData } from "../quizdata/quizData";
 import { useNavigate } from "react-router-dom";
 import Questions from "../components/questions";
 
-const Quiz: React.FC = () => {
+const Quiz: FC = () => {
   const [answers, setAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const navigate = useNavigate();
@@ -113,3 +113,43 @@ const Quiz: React.FC = () => {
 };
 
 export default Quiz;
+
+// import { FC, useState } from "react";
+// import { quizData } from "../quizdata/quizData";
+// import { useNavigate } from "react-router-dom";
+// import Questions from "../components/questions";
+
+// const Quiz: FC = () => {
+//   const [answers, setAnswers] = useState<string[]>([]);
+//   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+//   const navigate = useNavigate();
+
+//   const handleOptionSelect = (option: string) => {
+//     const newAnswers = [...answers];
+//     newAnswers[currentQuestion] = option;
+//     setAnswers(newAnswers);
+//   };
+
+//   const handleNext = () => {
+//     if (currentQuestion === quizData.length - 1) {
+//       navigate(`/results`);
+//     } else {
+//       setCurrentQuestion(currentQuestion + 1);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <Questions
+//         question={quizData[currentQuestion].question}
+//         options={quizData[currentQuestion].options}
+//         onOptionSelect={handleOptionSelect}
+//         selectedOptions={answers[currentQuestion]} // changed to selectedOptions for this question
+//         multiple={quizData[currentQuestion].multiple} // added multiple property for this question
+//       />
+//       <button onClick={handleNext}>Next</button>
+//     </div>
+//   );
+// };
+
+// export default Quiz;

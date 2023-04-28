@@ -4,11 +4,12 @@
 [√] connection with MongoDB successfull;
 [√] API calls for getting recipes is working;
 [√] get random recipe connected to frontend button;
+[√] added and refactored Quiz relevant code in store/reducers/recipeReducers.ts for api call;
 [] setting up quizzzzz
 
 
 to do:
-- start quiz koppelen aan quiz
+- start quiz button koppelen aan quiz
 - bij allergies meerdere opties kunnen selecteren
 - laatste next button moet anders heten
 (- voortgang)

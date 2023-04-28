@@ -1,11 +1,22 @@
 export const quizData = [
     {
       question: "What are you in the mood for?",
-      options: ["Main course", "Breakfast", "Dessert", "Snack"],
+      options: [
+        "Main course",
+        "Breakfast",
+        "Dessert",
+        "Snack"
+      ],
     },
     {
       question: "Any diet preferences?",
-      options: ["Gluten Free", "Keto", "Vegetarian", "Vegan", "Pescetarian", "Paleo"],
+      options: [
+        "Gluten Free",
+        "Keto",
+        "Vegetarian",
+        "Vegan",
+        "Pescetarian",
+        "Paleo"],
     },
     {
       question: "Any allergies/intolerances we should know of?",
@@ -21,8 +32,10 @@ export const quizData = [
         "Soy",
         "Sulfite",
         "Tree Nut",
-        "Wheat",
+        "Wheat"
       ],
+    //   multiple: true, // added multiple property for this question
     },
   ];
+  
   
