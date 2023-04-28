@@ -35,11 +35,11 @@ const getRandomRecipe = (_req, res) => __awaiter(void 0, void 0, void 0, functio
 exports.getRandomRecipe = getRandomRecipe;
 // next up: redux -> store -> axios api call -> localhost/api/quiz-recipe
 const getQuizRecipes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { type, diet, intolerances, cuisine } = req.query;
+    const { type, diet, intolerances } = req.query;
     // const { type, diet, intolerances, maxReadyTime, cuisine } = req.query;
     try {
         // const quizRecipes = await getQuizRecipesFromApi(type as string, diet as string, intolerances as string, Number(maxReadyTime), cuisine as string);
-        const quizRecipes = yield (0, spoonAPI_1.getQuizRecipesFromApi)(type, diet, intolerances, cuisine);
+        const quizRecipes = yield (0, spoonAPI_1.getQuizRecipesFromApi)(type, diet, intolerances);
         console.log('quizRecipes: ', quizRecipes);
         res.json(quizRecipes);
     }
@@ -49,78 +49,3 @@ const getQuizRecipes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getQuizRecipes = getQuizRecipes;
-// // GET all tasks //fix type error
-// const getTasks = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response<any, Record<string, any>>> => {
-//   const tasks: ITask[] = await Task.find({});
-//   return res.status(200).json(tasks);
-// };
-// // GET a single task
-// const getTask = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response<any, Record<string, any>>> => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).json({ error: "The task id is not found" });
-//   }
-//   const task: ITask | null = await Task.findById(id);
-//   if (!task) {
-//     return res.status(404).json({ error: "The task id is not found" });
-//   }
-//   return res.status(200).json(task);
-// };
-// //POST Create a new task
-// const createTask = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response<any, Record<string, any>>> => {
-//   const { time, title, quantity } = req.body;
-//   if (!time || !title || !quantity) {
-//     return res
-//       .status(400)
-//       .json({ error: "Task not added. All fields required." });
-//   }
-//   // Add document to db
-//   try {
-//     const task: ITask = await Task.create({ time, title, quantity });
-//     return res.status(200).json(task);
-//   } catch (error) {
-//     return res.status(400).json({ error: (error as Error).message });
-//   }
-// };
-// //DELETE Delete task
-// const deleteTask = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response<any, Record<string, any>>> => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).json({ error: "task with id is not found" });
-//   }
-//   const task: ITask | null = await Task.findOneAndDelete({ _id: id });
-//   if (!task) {
-//     return res.status(404).json({ error: "task id not found" });
-//   }
-//   return res.status(200).json(task);
-// };
-// //PUT Update task
-// const updateTask = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response<any, Record<string, any>>> => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).json({ error: "task with id is not found" });
-//   }
-//   const task: ITask | null = await Task.findByIdAndUpdate(id, req.body, {
-//     new: true,
-//   });
-//   if (!task) {
-//     return res.status(404).json({ error: "task id not found" });
-//   }
-//   return res.status(200).json(task);
-// };
-// // export { getTasks, getTask, createTask, deleteTask, updateTask };

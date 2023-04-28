@@ -170,14 +170,13 @@ const mockResult = [
     spoonacularSourceUrl: 'https://spoonacular.com/berry-banana-breakfast-smoothie-715497'
   }
 ]
-export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<Recipe[]> => {
+export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intolerances?: string): Promise<Recipe[]> => {
   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
     params: {
       apiKey: process.env.SPOONACULAR_API,
       maxReadyTime: 900,
       intolerances,
       number: 1,
-      cuisine,
       type,
       diet,
     }
@@ -203,7 +202,7 @@ export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intol
 };
 
 // TODO: turn off mock api response, change name at 161 to getQuizRecipesFromApi2 and change name at 128 to getQuizRecipesFromApi
-export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string, cuisine?: string): Promise<RecipeInformation[]> => {
+export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string): Promise<RecipeInformation[]> => {
   const random = mockResult[Math.floor(Math.random() * mockResult.length)];
   return [random];
 };

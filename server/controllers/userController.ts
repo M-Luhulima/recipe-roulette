@@ -26,6 +26,7 @@ export const getFavorites = async (req: Request, res: Response) => {
         const { userId } = req.params;
         
         const favoriteRecipes = await FavoriteRecipe.find({ userId });
+        // delete favoriteRecipes._id
         
         res.json(favoriteRecipes);
     } catch (error) {

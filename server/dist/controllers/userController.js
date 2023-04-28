@@ -33,6 +33,7 @@ const getFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     try {
         const { userId } = req.params;
         const favoriteRecipes = yield schema_1.FavoriteRecipe.find({ userId });
+        // delete favoriteRecipes._id
         res.json(favoriteRecipes);
     }
     catch (error) {
