@@ -191,7 +191,7 @@ export const getQuizRecipe = () => {
         console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
         dispatch(getQuizRecipesRequest())
         try {
-            const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz-recipe`, {
+            const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz`, {
                 params: {
                     type: '',
                     diet: '',

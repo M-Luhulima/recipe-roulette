@@ -15,7 +15,7 @@ const HomePage: FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch()
   const handleStart = () => {
-    console.log('handleStart')
+    navigate(`/quiz`);
   }
 
   const handleRandom = async () => {

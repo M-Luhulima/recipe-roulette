@@ -7,9 +7,9 @@ const Recipes: React.FC = () => {
     const dispatch: AppDispatch = useRecipeDispatch()
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
 
-//   useEffect(() => {
-//     dispatch(getRecipeRandom());
-//   }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getRecipeRandom());
+  // }, [dispatch]);
 
   return (
     <div>

@@ -1,9 +1,11 @@
 import Recipes from "../components/recipes";
+import QuizRecipes from "../components/quizRecipes";
 import "../index.css";
 
 const Results = () => { 
   return <div>
     <Recipes />
+    <QuizRecipes />
   </div>;
 };
 

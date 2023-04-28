@@ -2,7 +2,7 @@ import { Action, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import thunk, { ThunkDispatch } from 'redux-thunk'
 import rootReducer from './reducers'
-import { GetRecipesAction } from './reducers/recipesReducer';
+import { GetRecipesAction, GetQuizRecipesAction } from './reducers/recipesReducer';
 
 const store = configureStore({
     reducer: rootReducer,
@@ -15,8 +15,10 @@ export default store;
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 // export type AppDispatch = typeof store.dispatch
-export type AppDispatch = ThunkDispatch<any, any, Action<GetRecipesAction>>
+export type AppDispatch = ThunkDispatch<any, any, Action<GetRecipesAction | GetQuizRecipesAction>>
 export const useRecipeDispatch = () => useDispatch<AppDispatch>();
+export const useQuizRecipeDispatch = () => useDispatch<AppDispatch>();
 
 export const useRecipeSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useQuizRecipeSelector: TypedUseSelectorHook<RootState> = useSelector;
 
