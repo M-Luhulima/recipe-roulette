@@ -1,17 +1,12 @@
-// const Quiz = () => {
-//     return (
-//       <div> quiz </div>    
-//     )
-//     }
-    
-// export default Quiz;
-
-// import React, { useState } from "react";
+// import { FC, useState } from "react";
 // import { quizData } from "../quizdata/quizData";
+// import { useNavigate } from "react-router-dom";
+// import Questions from "../components/questions";
 
-// const Quiz: React.FC = () => {
+// const Quiz: FC = () => {
 //   const [answers, setAnswers] = useState<string[]>([]);
 //   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+//   const navigate = useNavigate();
 
 //   const handleOptionSelect = (option: string) => {
 //     const newAnswers = [...answers];
@@ -21,7 +16,7 @@
 
 //   const handleNext = () => {
 //     if (currentQuestion === quizData.length - 1) {
-//       // show recipes
+//       navigate(`/results`);
 //     } else {
 //       setCurrentQuestion(currentQuestion + 1);
 //     }
@@ -29,7 +24,7 @@
 
 //   return (
 //     <div>
-//       <Question
+//       <Questions
 //         question={quizData[currentQuestion].question}
 //         options={quizData[currentQuestion].options}
 //         onOptionSelect={handleOptionSelect}
@@ -40,39 +35,6 @@
 //   );
 // };
 
-// // type QuestionProps = {
-// //   question: string;
-// //   options: string[];
-// //   onOptionSelect: (option: string) => void;
-// //   selectedOption?: string;
-// // };
-
-// // const Question: React.FC<QuestionProps> = ({
-// //   question,
-// //   options,
-// //   onOptionSelect,
-// //   selectedOption,
-// // }) => {
-// //   return (
-// //     <div>
-// //       <h3>{question}</h3>
-// //       {options.map((option, i) => (
-// //         <div key={i}>
-// //           <input
-// //             type="radio"
-// //             id={option}
-// //             name={question}
-// //             value={option}
-// //             checked={selectedOption === option}
-// //             onChange={() => onOptionSelect(option)}
-// //           />
-// //           <label htmlFor={option}>{option}</label>
-// //         </div>
-// //       ))}
-// //     </div>
-// //   );
-// // };
-
 // export default Quiz;
 
 import { FC, useState } from "react";
@@ -80,15 +42,36 @@ import { quizData } from "../quizdata/quizData";
 import { useNavigate } from "react-router-dom";
 import Questions from "../components/questions";
 
+
+type QuizAnswers = Array<string[]>
+
+
 const Quiz: FC = () => {
-  const [answers, setAnswers] = useState<string[]>([]);
+  // const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<QuizAnswers>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const navigate = useNavigate();
 
-  const handleOptionSelect = (option: string) => {
+  const handleOptionSelect = (option: string[]) => {
+
     const newAnswers = [...answers];
+
     newAnswers[currentQuestion] = option;
     setAnswers(newAnswers);
+
+
+
+    /*
+    [['type'], ['diet'], ['intolerances: ']]
+    ['type', 'diet', 'intolerances: ']
+
+    {
+      type: 'dsafds',
+      diet: 'dafsd',
+      // intolerances: ['sdf', 'sdfds', 'sdfafd']
+      intolerances: ['sdf', 'sdfds', 'sdfafd'].join(',') => 'sdf, sdfds, sdfafd' 
+    }
+    */
   };
 
   const handleNext = () => {
@@ -99,6 +82,10 @@ const Quiz: FC = () => {
     }
   };
 
+  const handleBack = () => {
+    setCurrentQuestion(currentQuestion - 1);
+  };
+
   return (
     <div>
       <Questions
@@ -106,7 +93,12 @@ const Quiz: FC = () => {
         options={quizData[currentQuestion].options}
         onOptionSelect={handleOptionSelect}
         selectedOption={answers[currentQuestion]}
+        multiSelect={currentQuestion === 2}
       />
+      <br/>
+      {answers.join(' - ')}
+      <br/>
+      {currentQuestion > 0 ? <button onClick={handleBack}>Back</button> : ''}
       <button onClick={handleNext}>Next</button>
     </div>
   );
@@ -144,8 +136,7 @@ export default Quiz;
 //         question={quizData[currentQuestion].question}
 //         options={quizData[currentQuestion].options}
 //         onOptionSelect={handleOptionSelect}
-//         selectedOptions={answers[currentQuestion]} // changed to selectedOptions for this question
-//         multiple={quizData[currentQuestion].multiple} // added multiple property for this question
+//         selectedOption={answers[currentQuestion]}
 //       />
 //       <button onClick={handleNext}>Next</button>
 //     </div>

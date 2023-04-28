@@ -5,6 +5,7 @@
 [√] API calls for getting recipes is working;
 [√] get random recipe connected to frontend button;
 [√] added and refactored Quiz relevant code in store/reducers/recipeReducers.ts for api call;
+[√] back/next buttons in quiz;
 [] setting up quizzzzz
 
 
