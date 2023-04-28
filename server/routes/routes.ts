@@ -7,11 +7,8 @@ import {
 
 router.get('/random-recipe', getRandomRecipe);
 
-// router.get("/quiz-recipe", (_req, res) => {
-//   res.send("A quiz recipe should appear here");
-// });
+router.get('/quiz-recipe', getQuizRecipes);
 
-router.get('/quiz-recipe', getQuizRecipes)
 
 
 export default router;

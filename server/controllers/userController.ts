@@ -13,7 +13,7 @@ export const createFavorites = async (req: Request, res: Response) => {
         
         await favoriteRecipe.save();
         
-        res.json(favoriteRecipe);
+        res.status(201).json(favoriteRecipe);
     } catch (error) {
         console.error('createFavorites error: ', error);
         res.status(500).json({ message: 'api call failed' });
@@ -37,39 +37,39 @@ export const getFavorites = async (req: Request, res: Response) => {
 // cooked recipe and add to cooked/review list
 export const updateFavorites = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const { userId, recipeId } = req.params;
         const { isCooked, review } = req.body;
         
-        const favoriteRecipe = await FavoriteRecipe.findById(id);
-        
-        if (!favoriteRecipe) {
-            return res.status(404).json({ message: 'Favorite recipe not found' });
-        }
-        
-        favoriteRecipe.isCooked = isCooked;
-        favoriteRecipe.review = review;
-        
-        await favoriteRecipe.save();
-        
-        res.json(favoriteRecipe);
-    } catch (error) {
-        console.error('updateFavorites error: ', error);
-        res.status(500).json({ message: 'api call failed' });
+        const favoriteRecipe = await FavoriteRecipe.findOne({ userId, recipeId });
+    
+    if (!favoriteRecipe) {
+        return res.status(404).json({ message: 'Favorite recipe not found' });
     }
+    
+    favoriteRecipe.isCooked = isCooked;
+    favoriteRecipe.review = review;
+    
+    await favoriteRecipe.save();
+    
+    res.json(favoriteRecipe);
+  } catch (error) {
+    console.error('updateFavorites error: ', error);
+    res.status(500).json({ message: 'api call failed' });
+  }
 };
 
 // delete recipe from favorite lists
 export const deleteFavorites = async (req: Request, res: Response) => {
     try {
-      const { recipeId } = req.params;
+      const { userId, recipeId } = req.params;
   
-      const favoriteRecipe = await FavoriteRecipe.findByIdAndDelete(recipeId);
+      const favoriteRecipe = await FavoriteRecipe.findOneAndDelete({ userId, recipeId });
   
       if (!favoriteRecipe) {
         return res.status(404).json({ message: 'Favorite recipe not found' });
       }
   
-      res.json(favoriteRecipe);
+      res.status(204).json(favoriteRecipe);
     } catch (error) {
       console.error('deleteFavorites error: ', error);
       res.status(500).json({ message: 'api call failed' });

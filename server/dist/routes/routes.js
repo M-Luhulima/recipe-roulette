@@ -7,9 +7,6 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const controller_1 = require("../controllers/controller");
 router.get('/random-recipe', controller_1.getRandomRecipe);
-// router.get("/quiz-recipe", (_req, res) => {
-//   res.send("A quiz recipe should appear here");
-// });
 router.get('/quiz-recipe', controller_1.getQuizRecipes);
 exports.default = router;
 //--------------------------------------------------

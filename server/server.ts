@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./database/connection";
 import publicRoutes from './routes/routes';
+import userRoutes from './routes/userRoutes'
 
 dotenv.config();
 const app = express();
@@ -16,7 +17,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api", publicRoutes);
-// app.use("/api/user", privateRoutes);
+app.use("/api/user", userRoutes);
 
 app.get("/", (_req, res) => {
   res.send("Hello World!");

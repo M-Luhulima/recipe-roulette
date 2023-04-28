@@ -15,8 +15,8 @@ import { createFavorites, getFavorites, updateFavorites, deleteFavorites } from 
 const router: Router = express.Router();
 
 router.post('/favorites', createFavorites);
-router.get('/favorites', getFavorites);
-router.patch('/favorites', updateFavorites);
-router.delete('/favorites', deleteFavorites);
+router.get('/favorites/:userId', getFavorites);
+router.patch('/favorites/:userId/:recipeId', updateFavorites);
+router.delete('/favorites/:userId/:recipeId', deleteFavorites);
 
 export default router;
