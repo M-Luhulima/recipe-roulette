@@ -213,8 +213,6 @@ export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
   return random as unknown as Recipe;
 };
 
-// https://api.spoonacular.com/recipes/complexSearch?apiKey=5370b60f2c82426f98d20e49ac93e783&type=&diet=&intolerances=&cuisine=&number=1
-
 // export const getQuizRecipesFromApi = async (
 //   type?: string,
 //   diet?: string,
