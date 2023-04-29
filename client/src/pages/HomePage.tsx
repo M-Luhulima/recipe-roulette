@@ -2,6 +2,10 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
+import SignIn from "../components/auth/signIn";
+import SignUp from "../components/auth/signUp";
+import AuthDetails from "../components/auth/authDetails";
+
 // import getRandomRecipe from "../"
 // import TaskDetails from "../components/TaskDetails";
 // import { useTasksContext } from "../hooks/useTasksContext";
@@ -28,6 +32,9 @@ const HomePage: FC = () => {
 
   return (
     <div className="HomePage">
+      <SignIn></SignIn>
+      <SignUp></SignUp>
+      <AuthDetails></AuthDetails>
       <h1>Hungry??</h1>
         <button className="button HomePage__button" onClick={handleStart}>
           Start quiz

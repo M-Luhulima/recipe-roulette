@@ -50,3 +50,19 @@ How much time do you have?
 - < 30
 - < 60
 - > 60
+
+//////////Authentication Firebase step by step//////
+- created project; https://firebase.google.com/
+- project created; recipe-roulette-auth
+- did not add google analytics for now
+- frontend; npm install firebase. npm install @types/firebase --save-dev
+- backend; npm install firebase-admin, --> npm install @types/firebase-admin hoeft niet! Heb ik opgezocht. firebase-admin komt al met typescript.
+- register app on firebase 'recipe roulette'
+- created services folder
+- created firebase.ts file to connect with firebase
+- created component/auth folder
+- created signIn.tsx file  --> I use SignIn instead of LogIn because that is default for Firebase!
+- created signUp.tsx file
+- tested both components. created account for e***@gmail.com pw. --> worked
+- created authDetails.tsx which handles the state of the user. In case user is signedIn it can be signedOut. 
+- all is imported in the HomePage.tsx, with the next commit fix the layout/buttons, etc. 
