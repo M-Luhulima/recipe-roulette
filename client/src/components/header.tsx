@@ -13,9 +13,9 @@ const Header = (): JSX.Element => {
         </Link>
       </div>
       <div className="header-right">
-          <button className="login-button" onClick={handleLogout}>
+          {/* <button className="login-button" onClick={handleLogout}>
             Login
-          </button>
+          </button> */}
         </div>
     </header>
   );

@@ -16,7 +16,7 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        onClose(); // Close the modal after successful sign-up
+        onClose();
       })
       .catch((error) => {
         console.log(error);

@@ -5,7 +5,6 @@ import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
 import "../App.css";
-
 import AuthDetails from "../components/auth/authDetails";
 
 const HomePage: FC = () => {
@@ -31,18 +30,31 @@ const HomePage: FC = () => {
     setIsSignUpOpen(true);
   };
 
+  const [isSignInOpen, setIsSignInOpen] = useState<boolean>(false);
+
+  const handleSignInClose = () => {
+    setIsSignInOpen(false);
+  };
+
+  const handleSignInOpen = () => {
+    setIsSignInOpen(true);
+  };
+
   return (
     <div className="HomePage">
       <h1>Hungry??</h1>
-      <button className="button HomePage__button" onClick={handleStart}>
+      <button className="startQuiz-btn" onClick={handleStart}>
         Start quiz
       </button>
-      <button className="button HomePage__button" onClick={handleRandom}>
+      <button className="getRandom-btn" onClick={handleRandom}>
         Get random recipe
       </button>
 
-      <div>
-        <SignIn />
+      <div className="signin-container">
+        <button className="logIn-btn" onClick={handleSignInOpen}>
+          Log In
+        </button>
+        {isSignInOpen && <SignIn onClose={handleSignInClose} />}
         <div className="signup-container">
           <p>Don't have an account yet?</p>
           <button className="signUp-btn" onClick={handleSignUpOpen}>
@@ -57,6 +69,8 @@ const HomePage: FC = () => {
 };
 
 export default HomePage;
+
+
 
 // interface Recipe {
 //   id: number;

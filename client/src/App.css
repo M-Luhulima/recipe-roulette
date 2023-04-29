@@ -1,4 +1,85 @@
+/* HOMEPAGE  */
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.header-title {
+  color: rgb(31, 77, 163);
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HOMEPAGE BTNS */
+
+.startQuiz-btn {
+  background-color: rgb(16, 109, 114);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 0.3rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.getRandom-btn {
+  background-color: white;
+  color: rgb(16, 109, 114);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid rgb(16, 109, 114);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+/* SIGNIN BTN */
+
+.signin-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.logIn-btn {
+  background-color: #23c3ae;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: auto;
+}
+
+.logIn-btn:hover {
+  background-color: #3e8e41;
+}
+
 /* SIGNUP BTN */
+
 .signup-container {
   display: flex;
   align-items: center;
