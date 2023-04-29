@@ -1,61 +1,62 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
+import "../App.css";
+
 import AuthDetails from "../components/auth/authDetails";
-
-// import getRandomRecipe from "../"
-// import TaskDetails from "../components/TaskDetails";
-// import { useTasksContext } from "../hooks/useTasksContext";
-
-// interface HomePageProps {
-//   handleStart: () => void;
-//   handleRandom: () => void;
-// }
 
 const HomePage: FC = () => {
   const navigate = useNavigate();
-  const dispatch: AppDispatch = useRecipeDispatch()
+  const dispatch: AppDispatch = useRecipeDispatch();
   const handleStart = () => {
     navigate(`/quiz`);
-  }
+  };
 
   const handleRandom = async () => {
-    // const newRecipe = await getRandomRecipe();
-    console.log('newRecipe: '); //, newRecipe);
-    // setRandomRecipe(newRecipe);
+    console.log("newRecipe: ");
     dispatch(getRecipeRandom());
     navigate(`/results`);
   };
 
+  const [isSignUpOpen, setIsSignUpOpen] = useState<boolean>(false);
+
+  const handleSignUpClose = () => {
+    setIsSignUpOpen(false);
+  };
+
+  const handleSignUpOpen = () => {
+    setIsSignUpOpen(true);
+  };
+
   return (
     <div className="HomePage">
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-      <AuthDetails></AuthDetails>
       <h1>Hungry??</h1>
-        <button className="button HomePage__button" onClick={handleStart}>
-          Start quiz
-        </button>
-        <button className="button HomePage__button" onClick={handleRandom}>
-          Get random recipe
-        </button>
+      <button className="button HomePage__button" onClick={handleStart}>
+        Start quiz
+      </button>
+      <button className="button HomePage__button" onClick={handleRandom}>
+        Get random recipe
+      </button>
+
       <div>
+        <SignIn />
+        <div className="signup-container">
+          <p>Don't have an account yet?</p>
+          <button className="signUp-btn" onClick={handleSignUpOpen}>
+            Sign up
+          </button>
+        </div>
+        <AuthDetails />
       </div>
+      {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
     </div>
   );
 };
 
 export default HomePage;
-
-
-
-
-
-
-
 
 // interface Recipe {
 //   id: number;
