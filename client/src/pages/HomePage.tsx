@@ -43,13 +43,14 @@ const HomePage: FC = () => {
   return (
     <div className="HomePage">
       <h1>Hungry??</h1>
-      <button className="startQuiz-btn" onClick={handleStart}>
-        Start quiz
-      </button>
-      <button className="getRandom-btn" onClick={handleRandom}>
-        Get random recipe
-      </button>
-
+      <div className="btn-container">
+        <button className="startQuiz-btn" onClick={handleStart}>
+          Start quiz
+        </button>
+        <button className="getRandom-btn" onClick={handleRandom}>
+          Get random recipe
+        </button>
+      </div>
       <div className="signin-container">
         <button className="logIn-btn" onClick={handleSignInOpen}>
           Log In
@@ -69,8 +70,6 @@ const HomePage: FC = () => {
 };
 
 export default HomePage;
-
-
 
 // interface Recipe {
 //   id: number;

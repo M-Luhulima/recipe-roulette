@@ -1,18 +1,27 @@
 /* HOMEPAGE  */
 
+body {
+  background-color: #3a6073; /* fallback color if gradients are not supported */
+  background-image: linear-gradient(to bottom, #eebd89, #ff9190);
+}
+
 /* HEADER */
 .header {
+  background-color: #eebd89;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header-title {
-  color: rgb(31, 77, 163);
+  color: rgb(255, 255, 255);
   font-size: 28px;
   font-weight: bold;
   margin: 0;
+  text-align: center;
 }
 
 .header-right {
@@ -25,7 +34,30 @@
   color: inherit;
 }
 
+/* FOOTER */
+
+/* FOOTER */
+.footer {
+  background-color: #ff9190;
+  padding: 16px;
+  text-align: center;
+}
+
+.footer-p {
+  margin: 0;
+  font-size: 14px;
+  color: rgb(16, 109, 114);
+}
+
 /* HOMEPAGE BTNS */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 6rem;
+}
 
 .startQuiz-btn {
   background-color: rgb(16, 109, 114);
@@ -34,8 +66,10 @@
   font-weight: bold;
   padding: 0.8rem 1.6rem;
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   margin-right: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
   cursor: pointer;
 }
 
@@ -46,7 +80,7 @@
   font-weight: bold;
   padding: 0.8rem 1.6rem;
   border: 2px solid rgb(16, 109, 114);
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   cursor: pointer;
 }
 
@@ -64,18 +98,18 @@
 }
 
 .logIn-btn {
-  background-color: #23c3ae;
+  background-color: #20ab98;
   color: white;
-  padding: 12px 20px;
+  padding: 8px 19px;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
   margin-right: 10px;
   margin-top: auto;
 }
 
 .logIn-btn:hover {
-  background-color: #3e8e41;
+  background-color: #216053;
 }
 
 /* SIGNUP BTN */
@@ -93,7 +127,7 @@
 
 .signUp-btn {
   background-color: transparent;
-  color: rgb(16, 109, 114);
+  color: #20ab98;
   border: none;
   outline: none;
   font-size: 14px;
