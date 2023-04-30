@@ -4,8 +4,10 @@ import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
+import GoogleSignIn from "../components/auth/googleSignIn";
 import "../App.css";
 import AuthDetails from "../components/auth/authDetails";
+// import { GoogleAuthProvider } from "firebase/auth";
 
 const HomePage: FC = () => {
   const navigate = useNavigate();
@@ -40,6 +42,16 @@ const HomePage: FC = () => {
     setIsSignInOpen(true);
   };
 
+  const [isGoogleSignInOpen, setIsGoogleSignInOpen] = useState<boolean>(false);
+
+  const handleGoogleSignInClose = () => {
+    setIsGoogleSignInOpen(false);
+  };
+
+  const handleGoogleSignInOpen = () => {
+    setIsGoogleSignInOpen(true);
+  };
+
   return (
     <div className="HomePage">
       <h1>Hungry??</h1>
@@ -56,6 +68,14 @@ const HomePage: FC = () => {
           Log In
         </button>
         {isSignInOpen && <SignIn onClose={handleSignInClose} />}
+
+        <button className="google-btn" onClick={handleGoogleSignInOpen}>
+          Sign in with google
+        </button>
+        {isGoogleSignInOpen && (
+          <GoogleSignIn onClose={handleGoogleSignInClose} />
+        )}
+
         <div className="signup-container">
           <p>Don't have an account yet?</p>
           <button className="signUp-btn" onClick={handleSignUpOpen}>
@@ -70,6 +90,9 @@ const HomePage: FC = () => {
 };
 
 export default HomePage;
+
+
+///////////////////////////////////////////
 
 // interface Recipe {
 //   id: number;
