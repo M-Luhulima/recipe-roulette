@@ -5,7 +5,7 @@ import Footer from "./components/footer";
 import HomePage from "./pages/HomePage";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
-import MyPage from "./pages/MyPage";
+import UserPage from "./pages/UserPage";
 
 const App: FC = () => {
   return (
@@ -16,7 +16,7 @@ const App: FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/results" element={<Results />} />
-            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/userpage" element={<UserPage />} />
           </Routes>
         <Footer />
       </BrowserRouter>

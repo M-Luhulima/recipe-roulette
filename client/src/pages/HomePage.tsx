@@ -1,13 +1,13 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
 import GoogleSignIn from "../components/auth/googleSignIn";
-import "../App.css";
 import AuthDetails from "../components/auth/authDetails";
-// import { GoogleAuthProvider } from "firebase/auth";
+import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
+import "../App.css";
 
 const HomePage: FC = () => {
   const navigate = useNavigate();
@@ -52,6 +52,19 @@ const HomePage: FC = () => {
     setIsGoogleSignInOpen(true);
   };
 
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const auth: Auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsSignedIn(!!user);
+      if (user) {
+        navigate(`/userpage`);
+      }
+    });
+    return unsubscribe;
+  }, [navigate]);
+
   return (
     <div className="HomePage">
       <h1>Hungry??</h1>
@@ -92,7 +105,7 @@ const HomePage: FC = () => {
 export default HomePage;
 
 
-///////////////////////////////////////////
+/////////////////////////////////////////////
 
 // interface Recipe {
 //   id: number;
