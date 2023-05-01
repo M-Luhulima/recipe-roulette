@@ -9,6 +9,16 @@ import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
 
+// import getRandomRecipe from "../"
+// import TaskDetails from "../components/TaskDetails";
+// import { useTasksContext } from "../hooks/useTasksContext";
+
+// interface HomePageProps {
+//   handleStart: () => void;
+//   handleRandom: () => void;
+// }
+
+
 const HomePage: FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch();
