@@ -9,8 +9,6 @@ router.get('/random-recipe', getRandomRecipe);
 
 router.get('/quiz-recipe', getQuizRecipes);
 
-
-
 export default router;
 
 

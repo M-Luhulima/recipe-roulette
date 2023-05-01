@@ -60,7 +60,7 @@ const Recipes: React.FC = () => {
             ))}
           </ul>
           <h3>Instructions</h3>
-          <p>{r.instructions}</p>
+          <div dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
         </div>
       ))}
 

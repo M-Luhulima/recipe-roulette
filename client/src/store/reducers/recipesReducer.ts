@@ -189,17 +189,13 @@ export const getQuizRecipesError = (error: string): GetQuizRecipesErrorAction =>
 
 export const getQuizRecipe = (answers: QuizAnswers) => {
     return async (dispatch: Dispatch<GetQuizRecipesAction>) => {
-        console.log('answers: ', answers)
-        console.log('answers[0][0]: ', answers[0][0]);
-        console.log('answers[1][0]: ', answers[1][0]);
-        console.log('answers[2][0]: ', answers[2][0]);
-        console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
         dispatch(getQuizRecipesRequest());
+
         try {
             const params = {
-                type: answers[0][0] || undefined,
-                diet: answers[1][0] || undefined,
-                intolerances: answers[2][0] || undefined,
+                type: answers[0] && answers[0][0] ? answers[0][0] : undefined,
+                diet: answers[1] && answers[1][0] ? answers[1][0] : undefined,
+                intolerances: answers[2] && answers[2][0] ? answers[2][0] : undefined,
             };
 
             console.log('params: ', params);
@@ -209,7 +205,7 @@ export const getQuizRecipe = (answers: QuizAnswers) => {
             })
             // store res.data in state(useState)
             console.log('res.data', res.data)
-            dispatch(getQuizRecipesSuccess([res.data]));
+            dispatch(getQuizRecipesSuccess(res.data));
         }
         catch (e) {
             console.log('getQuizRecipe error ', e);
