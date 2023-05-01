@@ -41,12 +41,15 @@ import { FC, useState } from "react";
 import { quizData } from "../quizdata/quizData";
 import { useNavigate } from "react-router-dom";
 import Questions from "../components/questions";
+import { AppDispatch, useRecipeDispatch } from "../store/store";
+import { getQuizRecipe } from "../store/reducers/recipesReducer";
 
 
-type QuizAnswers = Array<string[]>
+export type QuizAnswers = Array<string[]>
 
 
 const Quiz: FC = () => {
+  const dispatch: AppDispatch = useRecipeDispatch();
   // const [answers, setAnswers] = useState<string[]>([]);
   const [answers, setAnswers] = useState<QuizAnswers>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -76,6 +79,8 @@ const Quiz: FC = () => {
 
   const handleNext = () => {
     if (currentQuestion === quizData.length - 1) {
+      console.log('answers: ', answers)
+      dispatch(getQuizRecipe(answers))
       navigate(`/results`);
     } else {
       setCurrentQuestion(currentQuestion + 1);

@@ -7,13 +7,21 @@ import { useNavigate } from "react-router-dom";
 const AuthDetails = () => {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState<User | null>(null);
+  const [authIdTokenUser, setAuthIdTokenUser] = useState<string | null>(null);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
+        user.getIdToken()
+        .then((token) => {
+          console.log('idToken onAuthStateChanged: ', token);
+          setAuthIdTokenUser(token);
+        });
+
       } else {
         setAuthUser(null);
+        setAuthIdTokenUser(null);
       }
     });
 

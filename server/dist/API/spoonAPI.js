@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRandomRecipeFromApi = exports.getQuizRecipesFromApi = exports.getQuizRecipesFromApi2 = exports.getRandomRecipeFromApi2 = void 0;
+exports.getRandomRecipeFromApi2 = exports.getQuizRecipesFromApi2 = exports.getQuizRecipesFromApi = exports.getRandomRecipeFromApi = void 0;
 const axios_1 = __importDefault(require("axios"));
 // API call 1 random recipe
-const getRandomRecipeFromApi2 = () => __awaiter(void 0, void 0, void 0, function* () {
+const getRandomRecipeFromApi = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
     console.log('getRandomRecipeFromAPi response.data: ', response.data);
@@ -33,7 +33,7 @@ const getRandomRecipeFromApi2 = () => __awaiter(void 0, void 0, void 0, function
     const recipe = Object.assign(Object.assign({}, response.data.recipes[0]), recipeInfoResponse.data);
     return recipe;
 });
-exports.getRandomRecipeFromApi2 = getRandomRecipeFromApi2;
+exports.getRandomRecipeFromApi = getRandomRecipeFromApi;
 // API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
 const mockResult = [
     {
@@ -127,7 +127,7 @@ const mockResult = [
         spoonacularSourceUrl: 'https://spoonacular.com/berry-banana-breakfast-smoothie-715497'
     }
 ];
-const getQuizRecipesFromApi2 = (type, diet, intolerances) => __awaiter(void 0, void 0, void 0, function* () {
+const getQuizRecipesFromApi = (type, diet, intolerances) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/complexSearch`, {
         params: {
             apiKey: process.env.SPOONACULAR_API,
@@ -154,19 +154,19 @@ const getQuizRecipesFromApi2 = (type, diet, intolerances) => __awaiter(void 0, v
     // TODO: add api call to https://api.spoonacular.com/recipes/{id}/information
     return [];
 });
-exports.getQuizRecipesFromApi2 = getQuizRecipesFromApi2;
+exports.getQuizRecipesFromApi = getQuizRecipesFromApi;
 // TODO: turn off mock api response, change name at 161 to getQuizRecipesFromApi2 and change name at 128 to getQuizRecipesFromApi
-const getQuizRecipesFromApi = (type, diet, intolerances) => __awaiter(void 0, void 0, void 0, function* () {
+const getQuizRecipesFromApi2 = (type, diet, intolerances) => __awaiter(void 0, void 0, void 0, function* () {
     const random = mockResult[Math.floor(Math.random() * mockResult.length)];
     return [random];
 });
-exports.getQuizRecipesFromApi = getQuizRecipesFromApi;
+exports.getQuizRecipesFromApi2 = getQuizRecipesFromApi2;
 // also do this rename for this api
-const getRandomRecipeFromApi = () => __awaiter(void 0, void 0, void 0, function* () {
+const getRandomRecipeFromApi2 = () => __awaiter(void 0, void 0, void 0, function* () {
     const random = mockResult[Math.floor(Math.random() * mockResult.length)];
     return random;
 });
-exports.getRandomRecipeFromApi = getRandomRecipeFromApi;
+exports.getRandomRecipeFromApi2 = getRandomRecipeFromApi2;
 // export const getQuizRecipesFromApi = async (
 //   type?: string,
 //   diet?: string,

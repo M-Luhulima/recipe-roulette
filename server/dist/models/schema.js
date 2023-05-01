@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FavoriteRecipe = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const favoriteRecipeSchema = new mongoose_1.default.Schema({
-    userId: { type: mongoose_1.default.Types.ObjectId, required: true },
-    recipeId: { type: mongoose_1.default.Types.ObjectId, required: true },
+    userId: { type: String, required: true },
+    recipeId: { type: String, required: true },
     isCooked: { type: Boolean, required: true, default: false },
     review: { type: String },
 });

@@ -15,7 +15,7 @@ export default store;
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 // export type AppDispatch = typeof store.dispatch
-export type AppDispatch = ThunkDispatch<any, any, Action<GetRecipesAction | GetQuizRecipesAction>>
+export type AppDispatch = ThunkDispatch<any, any, Action<GetRecipesAction | GetQuizRecipesAction >>
 export const useRecipeDispatch = () => useDispatch<AppDispatch>();
 export const useQuizRecipeDispatch = () => useDispatch<AppDispatch>();
 

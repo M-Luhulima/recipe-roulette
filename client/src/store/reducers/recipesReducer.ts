@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { Dispatch } from 'redux';
+import { QuizAnswers } from '../../pages/Quiz';
 // import { GET_RECIPES, GET_RECIPES_SUCCESS, GET_RECIPES_ERROR } from '../types'
 
 // Define the action type constants
@@ -186,16 +187,18 @@ export const getQuizRecipesError = (error: string): GetQuizRecipesErrorAction =>
     };
 }
 
-export const getQuizRecipe = () => {
+export const getQuizRecipe = (answers: QuizAnswers) => {
     return async (dispatch: Dispatch<GetQuizRecipesAction>) => {
+        console.log('answers: ', answers)
+        console.log('answers[0][0: ', answers[0][0]);
         console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
-        dispatch(getQuizRecipesRequest())
+        dispatch(getQuizRecipesRequest());
         try {
             const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz`, {
                 params: {
-                    type: '',
-                    diet: '',
-                    intolerances: '',
+                    type: answers[0][0] || undefined,
+                    diet: answers[0][1] || undefined,
+                    intolerances: answers[0][2] || undefined,
                 }
             })
             // store res.data in state(useState)
@@ -203,7 +206,7 @@ export const getQuizRecipe = () => {
             dispatch(getQuizRecipesSuccess([res.data]));
         }
         catch (e) {
-            console.log('getRecipeRandom error ', e);
+            console.log('getQuizRecipe error ', e);
             dispatch(getQuizRecipesError(`${e}`));
         }
     }

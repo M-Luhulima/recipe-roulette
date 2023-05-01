@@ -16,6 +16,7 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+
         onClose();
       })
       .catch((error) => {

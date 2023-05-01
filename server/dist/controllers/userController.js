@@ -14,7 +14,8 @@ const schema_1 = require("../models/schema");
 // add recipe to favorite list of user account
 const createFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId, recipeId } = req.body;
+        const { recipeId } = req.body;
+        const userId = req.headers.uid;
         const favoriteRecipe = new schema_1.FavoriteRecipe({
             userId,
             recipeId,
@@ -31,7 +32,7 @@ exports.createFavorites = createFavorites;
 // view favorite list
 const getFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId } = req.params;
+        const userId = req.headers.uid;
         const favoriteRecipes = yield schema_1.FavoriteRecipe.find({ userId });
         // delete favoriteRecipes._id
         res.json(favoriteRecipes);
@@ -45,7 +46,8 @@ exports.getFavorites = getFavorites;
 // cooked recipe and add to cooked/review list
 const updateFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId, recipeId } = req.params;
+        const userId = req.headers.uid;
+        const { recipeId } = req.params;
         const { isCooked, review } = req.body;
         const favoriteRecipe = yield schema_1.FavoriteRecipe.findOne({ userId, recipeId });
         if (!favoriteRecipe) {
@@ -65,7 +67,8 @@ exports.updateFavorites = updateFavorites;
 // delete recipe from favorite lists
 const deleteFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId, recipeId } = req.params;
+        const userId = req.headers.uid;
+        const { recipeId } = req.params;
         const favoriteRecipe = yield schema_1.FavoriteRecipe.findOneAndDelete({ userId, recipeId });
         if (!favoriteRecipe) {
             return res.status(404).json({ message: 'Favorite recipe not found' });

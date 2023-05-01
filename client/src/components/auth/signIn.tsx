@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, Auth } from "firebase/auth";
+import { signInWithEmailAndPassword, Auth, UserCredential } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
 import "./signIn.css";
@@ -16,6 +16,7 @@ const SignIn: React.FC<SignInProps> = ({ onClose }) => {
     signInWithEmailAndPassword(auth as Auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+
         onClose();
       })
       .catch((error) => {

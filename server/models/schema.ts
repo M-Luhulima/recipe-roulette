@@ -8,8 +8,8 @@ export interface IFavoriteRecipe extends Document {
 }
 
 const favoriteRecipeSchema = new mongoose.Schema({
-  userId: { type: mongoose.Types.ObjectId, required: true },
-  recipeId: { type: mongoose.Types.ObjectId, required: true },
+  userId: { type: String, required: true },
+  recipeId: { type: String, required: true },
   isCooked: { type: Boolean, required: true, default: false },
   review: { type: String },
 });
