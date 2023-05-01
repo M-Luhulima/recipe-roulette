@@ -8,6 +8,7 @@
 [√] back/next buttons in quiz;
 [] setting up quizzzzz
 
+[] see if we can convert the imperial to metric https://spoonacular.com/food-api/docs#Convert-Amounts
 
 to do:
 - start quiz button koppelen aan quiz
