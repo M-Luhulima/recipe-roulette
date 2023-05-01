@@ -190,16 +190,22 @@ export const getQuizRecipesError = (error: string): GetQuizRecipesErrorAction =>
 export const getQuizRecipe = (answers: QuizAnswers) => {
     return async (dispatch: Dispatch<GetQuizRecipesAction>) => {
         console.log('answers: ', answers)
-        console.log('answers[0][0: ', answers[0][0]);
+        console.log('answers[0][0]: ', answers[0][0]);
+        console.log('answers[1][0]: ', answers[1][0]);
+        console.log('answers[2][0]: ', answers[2][0]);
         console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
         dispatch(getQuizRecipesRequest());
         try {
-            const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz`, {
-                params: {
-                    type: answers[0][0] || undefined,
-                    diet: answers[0][1] || undefined,
-                    intolerances: answers[0][2] || undefined,
-                }
+            const params = {
+                type: answers[0][0] || undefined,
+                diet: answers[1][0] || undefined,
+                intolerances: answers[2][0] || undefined,
+            };
+
+            console.log('params: ', params);
+
+            const res: AxiosResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/quiz-recipe`, {
+                params
             })
             // store res.data in state(useState)
             console.log('res.data', res.data)

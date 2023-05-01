@@ -79,10 +79,11 @@ const Quiz: FC = () => {
 
   const handleNext = () => {
     if (currentQuestion === quizData.length - 1) {
-      console.log('answers: ', answers)
-      dispatch(getQuizRecipe(answers))
+      console.log('answers: ', answers);
+      dispatch(getQuizRecipe(answers));
       navigate(`/results`);
     } else {
+      console.log('setCurrentQuestion answers: ', answers);
       setCurrentQuestion(currentQuestion + 1);
     }
   };

@@ -13,7 +13,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
-import { getRecipeRandom } from '../store/reducers/recipesReducer';
+// import { getRecipeRandom } from '../store/reducers/recipesReducer';
 
 const Recipes: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch()
@@ -21,7 +21,7 @@ const Recipes: React.FC = () => {
   const [authIdTokenUser] = useState<string | null>(null);
 
   useEffect(() => {
-    dispatch(getRecipeRandom());
+    // dispatch(getRecipeRandom());
   }, [dispatch]);
 
   const handleSaveRecipe = async (recipeId: string) => {

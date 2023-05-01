@@ -4,12 +4,12 @@ import { getQuizRecipe } from '../store/reducers/recipesReducer';
 
 
 const QuizRecipes: React.FC = () => {
-    const dispatch: AppDispatch = useQuizRecipeDispatch()
+    // const dispatch: AppDispatch = useQuizRecipeDispatch()
   const { recipes } = useQuizRecipeSelector((state: RootState) => state.recipes);
 
-//   useEffect(() => {
-//     dispatch(getQuizRecipe());
-//   }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getQuizRecipe());
+  // }, [dispatch]);
 
   return (
     <div>
