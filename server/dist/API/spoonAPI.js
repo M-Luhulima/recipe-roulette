@@ -18,9 +18,20 @@ const axios_1 = __importDefault(require("axios"));
 const getRandomRecipeFromApi2 = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
     const response = yield axios_1.default.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
-    console.log(response.data);
+    console.log('getRandomRecipeFromAPi response.data: ', response.data);
     console.log("getRandomRecipeFromApi"); // Add this line to check if data is being returned
-    return response.data.recipes[0];
+    const recipeId = response.data.recipes[0].id;
+    console.log('recipeId: ', recipeId);
+    // Add this code block to fetch additional recipe information
+    const recipeInfoResponse = yield axios_1.default.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
+        params: {
+            apiKey: process.env.SPOONACULAR_API,
+        }
+    });
+    console.log('recipeInfoResponse: ', recipeInfoResponse.data);
+    // Combine the recipe information and basic recipe data
+    const recipe = Object.assign(Object.assign({}, response.data.recipes[0]), recipeInfoResponse.data);
+    return recipe;
 });
 exports.getRandomRecipeFromApi2 = getRandomRecipeFromApi2;
 // API call 3 recipes after quiz >> maxReadyTime lijkt ingevuld te moeten worden als je de link uitprobeert
@@ -58,7 +69,7 @@ const mockResult = [
         diets: ['lacto ovo vegetarian'],
         occasions: [],
         winePairing: { pairedWines: [], pairingText: '', productMatches: [] },
-        instructions: '<p>Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.</p>',
+        instructions: 'Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.',
         analyzedInstructions: [[Object]],
         report: 'weird picture',
         tips: { health: [Array], price: [Array], cooking: [], green: [Array] },
@@ -103,7 +114,7 @@ const mockResult = [
         diets: ['lacto ovo vegetarian'],
         occasions: [],
         winePairing: { pairedWines: [], pairingText: '', productMatches: [] },
-        instructions: '<p>Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.</p>',
+        instructions: 'Take some yogurt in your favorite flavor and add 1 container to your blender. Add in the berries, banana, and soy milk and blend. Top your glass with a few graham cracker crumbs and serve.',
         analyzedInstructions: [[Object]],
         report: 'weird picture',
         tips: { health: [Array], price: [Array], cooking: [], green: [Array] },

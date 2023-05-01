@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthDetails from "../components/auth/authDetails";
+// import FavRecipes from "../components/favRecipes";
 
 const UserPage = () => {
   return (
@@ -16,6 +17,7 @@ const UserPage = () => {
         <Link to="/favorites">Favorites</Link>
       </button>
       <AuthDetails />
+      {/* <FavRecipes /> */}
     </div>
   );
 };
