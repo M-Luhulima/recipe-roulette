@@ -23,7 +23,7 @@ const Recipes: React.FC = () => {
 
     try {
       const token = await user.getIdToken();
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId }, { headers: { idtoken: token } });
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId, recipe }, { headers: { idtoken: token } });
       console.log('Recipe saved successfully', res.data);
     } catch (error) {
       console.error('Error saving recipe', error);

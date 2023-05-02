@@ -28,6 +28,7 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
+import FavRecipes from "../components/favRecipes";
 import AuthDetails from "../components/auth/authDetails";
 
 const UserPage: FC = () => {
@@ -53,6 +54,9 @@ const UserPage: FC = () => {
         <button className="getRandom-btn" onClick={handleRandom}>
           Get random recipe
         </button>
+        <br></br>
+        <FavRecipes />
+        <br></br>
         <AuthDetails />
       </div>
       </div>

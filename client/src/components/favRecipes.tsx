@@ -1,5 +1,15 @@
 import { FC, useState } from "react";
 
+const FavRecipes: FC = () => {
+  return (
+  <section className="favorites">
+    <h2 className="favorites__title">Favorite Recipes</h2>
+  </section>
+);
+};
+
+export default FavRecipes
+
 // interface FavoriteRecipesProps {
 //   favoriteRecipes: { id: string; recipe: string }[];
 //   handleDeleteRecipe: (recipeToDelete: { id: string; recipe: string }) => void;
