@@ -97,7 +97,8 @@
   },
   "include": [
     "src/**/*",
-    "server.ts"
+    "server.ts",
+    "service-account.json"
   ],
   "exclude": [
     "node_modules",
