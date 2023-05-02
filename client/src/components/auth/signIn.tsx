@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword, Auth, UserCredential } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
+import GoogleSignIn from "./googleSignIn";
 import "./signIn.css";
 
 interface SignInProps {
@@ -31,7 +32,7 @@ const SignIn: React.FC<SignInProps> = ({ onClose }) => {
           &times;
         </button>
         <form onSubmit={signIn}>
-          <h1>Log In</h1>
+          <h1>Sign In</h1>
           <input
             type="email"
             placeholder="Enter your email"
@@ -47,7 +48,7 @@ const SignIn: React.FC<SignInProps> = ({ onClose }) => {
             className="input"
           ></input>
           <button type="submit" className="button">
-            Log In
+            Sign In
           </button>
         </form>
       </div>

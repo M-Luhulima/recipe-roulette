@@ -18,7 +18,6 @@ import "../App.css";
 //   handleRandom: () => void;
 // }
 
-
 const HomePage: FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch();

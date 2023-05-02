@@ -1,48 +1,31 @@
-// import Recipes from "../components/recipes";
-// import QuizRecipes from "../components/quizRecipes";
-// import "../index.css";
-
-// const Results = () => { 
-//   return <div>
-//     <Recipes />
-//     <QuizRecipes />
-//   </div>;
-// };
-
-// export default Results;
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
-// import { getRecipeRandom } from '../store/reducers/recipesReducer';
+import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../services/firebase';
 
 const Recipes: React.FC = () => {
-  const dispatch: AppDispatch = useRecipeDispatch()
+  const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
-  const [authIdTokenUser] = useState<string | null>(null);
+  const [user] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
     // dispatch(getRecipeRandom());
   }, [dispatch]);
 
-  const handleSaveRecipe = async (recipeId: string) => {
+  const handleSaveRecipe = async (recipeId: number) => {
+    if (!user) {
+      console.error('User not logged in');
+      return;
+    }
 
     try {
-      const response = await fetch('/api/user/favorites', {
-        method: 'POST',
-        headers: {
-          idtoken: authIdTokenUser || 'unknown',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: 'USER_ID_HERE', // replace with the user ID of the logged-in user
-          recipeId,
-        }),
-      });
-
-      const data = await response.json();
-      console.log(data); // log the saved recipe data to the console
+      const token = await user.getIdToken();
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId }, { headers: { idtoken: token } });
+      console.log('Recipe saved successfully', res.data);
     } catch (error) {
-      console.error('handleSaveRecipe error:', error);
+      console.error('Error saving recipe', error);
     }
   };
 
@@ -63,9 +46,8 @@ const Recipes: React.FC = () => {
           <div dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
         </div>
       ))}
-
     </div>
-  )
+  );
 };
 
 export default Recipes;
