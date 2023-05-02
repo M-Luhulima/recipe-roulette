@@ -408,7 +408,47 @@ export const postSaveRecipe = (recipeId: number, recipe: Recipe, user: User) => 
 };
 
 
-// Here starts getSavedRecipe
+// Here starts getSavedRecipe (not sure if these are correct)
+export const getSavedRecipesRequest = (): GetSavedRecipesRequestAction => {
+    return {
+        type: ActionTypes.GET_SAVEDRECIPES
+    };
+}
+
+export const getSavedRecipesSuccess = (data: any[]): GetSavedRecipesSuccessAction => {
+    return {
+        type: ActionTypes.GET_SAVEDRECIPES_SUCCESS,
+        payload: data,
+    };
+}
+
+export const getSavedRecipesError = (error: string): GetSavedRecipesErrorAction => {
+    return {
+        type: ActionTypes.GET_SAVEDRECIPES_ERROR,
+        payload: error,
+    };
+}
+export const getSavedRecipes = () => {
+    return async (dispatch: Dispatch<RecipesAction>) => {
+      dispatch({ type: ActionTypes.GET_SAVEDRECIPES });
+  
+      try {
+        const { data } = await axios.get('/api/user/favorites', {
+          headers: {
+            idToken: await auth.currentUser?.getIdToken(),
+          },
+        });
+  
+        dispatch({
+          type: ActionTypes.GET_SAVEDRECIPES_SUCCESS,
+          payload: data,
+        });
+      } catch (error) {
+        console.error('Error getting saved recipes', error);
+        dispatch(getSavedRecipesError(`${error}`));
+      }
+    };
+  };
 
 // Here starts deleteSavedRecipe
 export const deleteRecipesRequest = (): DeleteSavedRecipesRequestAction => {
@@ -452,10 +492,52 @@ export const deleteRecipe = (recipeId: number, user: User) => {
     };
 };
 
+// Here starts updateSavedRecipe (not sure if these are correct)
+export const updateRecipesRequest = (): UpdateSavedRecipesRequestAction => {
+    return {
+        type: ActionTypes.UPDATE_SAVEDRECIPES
+    };
+}
 
+export const updateRecipesSuccess = (data: any[]): UpdateSavedRecipesSuccessAction => {
+    return {
+        type: ActionTypes.UPDATE_SAVEDRECIPES_SUCCESS,
+        payload: data,
+    };
+}
 
-// Here starts updateSavedRecipe
+export const updateRecipesError = (error: string): UpdateSavedRecipesErrorAction => {
+    return {
+        type: ActionTypes.UPDATE_SAVEDRECIPES_ERROR,
+        payload: error,
+    };
+}
 
+export const updateSavedRecipe = (recipeId: string, isCooked: boolean, review?: string) => {
+    return async (dispatch: Dispatch) => {
+      dispatch({ type: ActionTypes.UPDATE_SAVEDRECIPES });
+  
+      try {
+        const { data } = await axios.patch(
+          `/api/user/favorites/${recipeId}`,
+          { isCooked, review },
+          {
+            headers: {
+              idToken: await auth.currentUser?.getIdToken(),
+            },
+          }
+        );
+  
+        dispatch({
+          type: ActionTypes.UPDATE_SAVEDRECIPES_SUCCESS,
+          payload: data,
+        });
+      } catch (error) {
+        console.error('Error updating recipe', error);
+        dispatch(updateRecipesError(`${error}`));
+      }
+    };
+  };
 
 
 // import {GET_USERS} from '../types'
