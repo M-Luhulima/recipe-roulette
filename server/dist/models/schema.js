@@ -10,5 +10,6 @@ const favoriteRecipeSchema = new mongoose_1.default.Schema({
     recipeId: { type: String, required: true },
     isCooked: { type: Boolean, required: true, default: false },
     review: { type: String },
+    recipe: { type: Object },
 });
 exports.FavoriteRecipe = mongoose_1.default.model('FavoriteRecipe', favoriteRecipeSchema);

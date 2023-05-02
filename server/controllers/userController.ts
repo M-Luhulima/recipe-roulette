@@ -4,13 +4,15 @@ import { FavoriteRecipe, IFavoriteRecipe } from '../models/schema';
 // add recipe to favorite list of user account
 export const createFavorites = async (req: Request, res: Response) => {
   try {
-    const { recipeId } = req.body;
+    const { recipeId, recipe } = req.body;
     const userId = req.headers.uid;
 
     const favoriteRecipe: IFavoriteRecipe = new FavoriteRecipe({
-      userId,
       recipeId,
+      userId,
+      recipe,
     });
+
 
     await favoriteRecipe.save();
 
@@ -43,6 +45,8 @@ export const updateFavorites = async (req: Request, res: Response) => {
     const { recipeId } = req.params;
     const { isCooked, review } = req.body;
 
+    
+    // FavoriteRecipe.findByIdAndUpdate
     const favoriteRecipe = await FavoriteRecipe.findOne({ userId, recipeId });
 
     if (!favoriteRecipe) {

@@ -3,6 +3,7 @@ import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '..
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../services/firebase';
+import { Recipe } from '../models/types';
 
 const Recipes: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch();
@@ -14,7 +15,7 @@ const Recipes: React.FC = () => {
     // dispatch(getRecipeRandom());
   }, [dispatch]);
 
-  const handleSaveRecipe = async (recipeId: number) => {
+  const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
     if (!user) {
       console.error('User not logged in');
       return;
@@ -33,13 +34,13 @@ const Recipes: React.FC = () => {
     <div>
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
         <div key={r.id}>
-          <button onClick={() => handleSaveRecipe(r.id)}>Save recipe</button>
+          <button onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
           <h2>{r.title}</h2>
           <img src={r.image} alt={r.title} />
           <h3>Ingredients:</h3>
           <ul>
             {r.extendedIngredients.map((i: any) => (
-              <li key={`${r.id}${i.id}`}>{i.original}</li>
+              <li key={`${r.id}-${i.id}`}>{i.original}</li>
             ))}
           </ul>
           <h3>Instructions</h3>

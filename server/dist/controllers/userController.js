@@ -14,11 +14,12 @@ const schema_1 = require("../models/schema");
 // add recipe to favorite list of user account
 const createFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { recipeId } = req.body;
+        const { recipeId, recipe } = req.body;
         const userId = req.headers.uid;
         const favoriteRecipe = new schema_1.FavoriteRecipe({
-            userId,
             recipeId,
+            userId,
+            recipe,
         });
         yield favoriteRecipe.save();
         res.status(201).json(favoriteRecipe);
@@ -49,6 +50,7 @@ const updateFavorites = (req, res) => __awaiter(void 0, void 0, void 0, function
         const userId = req.headers.uid;
         const { recipeId } = req.params;
         const { isCooked, review } = req.body;
+        // FavoriteRecipe.findByIdAndUpdate
         const favoriteRecipe = yield schema_1.FavoriteRecipe.findOne({ userId, recipeId });
         if (!favoriteRecipe) {
             return res.status(404).json({ message: 'Favorite recipe not found' });
