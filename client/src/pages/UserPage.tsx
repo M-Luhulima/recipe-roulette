@@ -58,6 +58,7 @@ const UserPage: FC = () => {
         <FavRecipes />
         <br></br>
         <AuthDetails />
+        <br></br>
       </div>
       </div>
 )
