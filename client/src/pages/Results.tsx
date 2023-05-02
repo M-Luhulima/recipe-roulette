@@ -1,15 +1,35 @@
 import React, { useEffect } from 'react';
-import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
-// import axios from 'axios';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import { auth } from '../services/firebase';
+import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector, useSaveRecipeDispatch } from '../store/store';
 import { Recipe } from '../models/types';
-import { postSaveRecipe } from '../store/reducers/recipesReducer';
+import { deleteRecipe, postSaveRecipe } from '../store/reducers/recipesReducer';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../services/firebase';
 
 
 const Results: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
+  const [user] = useAuthState(auth);
+
+  const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
+    if (!user) {
+      console.error('User not logged in');
+      return;
+    }
+
+    dispatch(postSaveRecipe(recipeId, recipe, user));
+  };
+
+
+  // const handleDeleteRecipe = async (recipeId: number, recipe: Recipe) => {
+  //   if (!user) {
+  //     console.error('User not logged in');
+  //     return;
+  //   }
+
+  //   dispatch(deleteRecipe(recipeId, user));
+  // };
+
   // const [user] = useAuthState(auth);
   // const [user, loading, error] = useAuthState(auth);
 
@@ -17,21 +37,14 @@ const Results: React.FC = () => {
     // dispatch(getRecipeRandom());
   }, [dispatch]);
 
-  const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
-    dispatch(postSaveRecipe)
-    // if (!user) {
-    //   console.error('User not logged in');
-    //   return;
-    // }
+  // const handleSaveRecipe = (recipeId: number, recipe: Recipe) => {
+  //   postSaveRecipe(dispatch, recipeId, recipe, user);
+  // };
 
-    // try {
-    //   const token = await user.getIdToken();
-    //   const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId, recipe }, { headers: { idtoken: token } });
-    //   console.log('Recipe saved successfully', res.data);
-    // } catch (error) {
-    //   console.error('Error saving recipe', error);
-    // }
-  };
+  // const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
+  //   dispatch(useSaveRecipeDispatch)
+  // };
+
 
   return (
     <div>

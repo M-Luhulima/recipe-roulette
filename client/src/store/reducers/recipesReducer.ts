@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { User } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Dispatch } from 'redux';
 import { Recipe } from '../../models/types';
@@ -31,8 +32,8 @@ enum ActionTypes {
 
 export interface DataState {
     recipes: any[],
-
-    loading: boolean,    error: string | null,
+    //TODO: add favRecipes here
+    loading: boolean, error: string | null,
 }
 
 export type RecipesAction =
@@ -153,6 +154,7 @@ export interface UpdateSavedRecipesErrorAction {
 // state    
 const initialState: DataState = {
     recipes: [],
+    //TODO: and add favRecipes here
     loading: true,
     error: null,
 }
@@ -219,6 +221,9 @@ export const recipeReducer = (state = initialState, action: RecipesAction): Data
             return {
                 ...state,
                 error: null,
+
+                    //TODO: add favRecipes here
+                //favRecipes: action.payload,
                 loading: true,
             };
         case ActionTypes.GET_SAVEDRECIPES_SUCCESS:
@@ -385,16 +390,10 @@ export const postSaveRecipesError = (error: string): PostSaveRecipesErrorAction 
     };
 }
 
-export const postSaveRecipe = (recipeId: number, recipe: Recipe) => {
+export const postSaveRecipe = (recipeId: number, recipe: Recipe, user: User) => {
     return async (dispatch: Dispatch<RecipesAction>) => {
+        console.log('postSaveRecipe');
         dispatch(postSaveRecipesRequest());
-
-        const [user] = useAuthState(auth);
-
-        if (!user) {
-          console.error('User not logged in');
-          return;
-        }
 
         try {
             const token = await user.getIdToken();
@@ -412,6 +411,48 @@ export const postSaveRecipe = (recipeId: number, recipe: Recipe) => {
 // Here starts getSavedRecipe
 
 // Here starts deleteSavedRecipe
+export const deleteRecipesRequest = (): DeleteSavedRecipesRequestAction => {
+    return {
+        type: ActionTypes.DELETE_SAVEDRECIPES
+    };
+}
+
+export const deleteRecipesSuccess = (data: any[]): DeleteSavedRecipesSuccessAction => {
+    return {
+        type: ActionTypes.DELETE_SAVEDRECIPES_SUCCESS,
+        payload: data,
+    };
+}
+
+export const deleteRecipesError = (error: string): DeleteSavedRecipesErrorAction => {
+    return {
+        type: ActionTypes.DELETE_SAVEDRECIPES_ERROR,
+        payload: error,
+    };
+}
+
+export const deleteRecipe = (recipeId: number, user: User) => {
+    return async (dispatch: Dispatch<RecipesAction>) => {
+        console.log('deleteRecipe');
+        dispatch(deleteRecipesRequest());
+
+        try {
+            const token = await user.getIdToken();
+            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/user/favorites/${recipeId}`, {
+                headers: {
+                    idtoken: token
+                }
+            });
+            console.log('Recipe deleted successfully', res.data);
+            dispatch(deleteRecipesSuccess(res.data));
+        } catch (error) {
+            console.error('Error deleting recipe', error);
+            dispatch(deleteRecipesError(`${error}`));
+        }
+    };
+};
+
+
 
 // Here starts updateSavedRecipe
 
