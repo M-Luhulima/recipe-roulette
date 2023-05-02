@@ -7,6 +7,7 @@
 [√] added and refactored Quiz relevant code in store/reducers/recipeReducers.ts for api call;
 [√] back/next buttons in quiz;
 [] setting up quizzzzz
+[] handleSaveRecipe should be moved to recipeReducer file so it's Redux
 
 [] see if we can convert the imperial to metric https://spoonacular.com/food-api/docs#Convert-Amounts
 

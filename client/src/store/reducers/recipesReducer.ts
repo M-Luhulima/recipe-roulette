@@ -111,11 +111,6 @@ enum QuizActionTypes {
     GET_QUIZRECIPES_ERROR = 'GET_QUIZRECIPES_ERROR',
 }
 
-export interface DataState {
-    recipes: any[],
-    loading: boolean,
-    error: string | null,
-}
 
 export interface GetQuizRecipesRequestAction {
     type: QuizActionTypes.GET_QUIZRECIPES;
@@ -136,13 +131,8 @@ export type GetQuizRecipesAction =
     | GetQuizRecipesSuccessAction
     | GetQuizRecipesErrorAction;
 
-const quizInitialState: DataState = {
-    recipes: [],
-    loading: true,
-    error: null,
-}
 
-export const quizRecipeReducer = (state = quizInitialState, action: GetQuizRecipesAction): DataState => {
+export const quizRecipeReducer = (state = initialState, action: GetQuizRecipesAction): DataState => {
     switch (action.type) {
         case QuizActionTypes.GET_QUIZRECIPES:
             return {

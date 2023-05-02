@@ -39,7 +39,7 @@ const Recipes: React.FC = () => {
           <h3>Ingredients:</h3>
           <ul>
             {r.extendedIngredients.map((i: any) => (
-              <li key={i.id}>{i.original}</li>
+              <li key={`${r.id}${i.id}`}>{i.original}</li>
             ))}
           </ul>
           <h3>Instructions</h3>

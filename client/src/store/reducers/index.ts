@@ -3,6 +3,7 @@ import {recipeReducer} from './recipesReducer'
 
 export default combineReducers({
   recipes: recipeReducer,
+  quiz: recipeReducer,
 })
 
 // import { combineReducers } from 'redux'
