@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
-import axios from 'axios';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../services/firebase';
+// import axios from 'axios';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import { auth } from '../services/firebase';
 import { Recipe } from '../models/types';
+import { postSaveRecipe } from '../store/reducers/recipesReducer';
 
-const Recipes: React.FC = () => {
+
+const Results: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
   // const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
@@ -16,18 +18,19 @@ const Recipes: React.FC = () => {
   }, [dispatch]);
 
   const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
-    if (!user) {
-      console.error('User not logged in');
-      return;
-    }
+    dispatch(postSaveRecipe)
+    // if (!user) {
+    //   console.error('User not logged in');
+    //   return;
+    // }
 
-    try {
-      const token = await user.getIdToken();
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId, recipe }, { headers: { idtoken: token } });
-      console.log('Recipe saved successfully', res.data);
-    } catch (error) {
-      console.error('Error saving recipe', error);
-    }
+    // try {
+    //   const token = await user.getIdToken();
+    //   const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/favorites`, { recipeId, recipe }, { headers: { idtoken: token } });
+    //   console.log('Recipe saved successfully', res.data);
+    // } catch (error) {
+    //   console.error('Error saving recipe', error);
+    // }
   };
 
   return (
@@ -51,4 +54,4 @@ const Recipes: React.FC = () => {
   );
 };
 
-export default Recipes;
+export default Results;

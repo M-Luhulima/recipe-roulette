@@ -1,6 +1,8 @@
 import { GoogleAuthProvider, signInWithPopup, Auth } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
+// import "./googleSignIn.css";
+import "./signIn.css";
 
 interface GoogleSignInProps {
   onClose: () => void;
@@ -20,17 +22,9 @@ const GoogleSignIn: React.FC<GoogleSignInProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-container">
-      <div className="modal-content">
-        <button className="close" onClick={onClose}>
-          &times;
-        </button>
-        <h1>Sign In with Google</h1>
-        <button onClick={handleGoogle} className="button">
-          Sign In with Google
-        </button>
-      </div>
-    </div>
+    <button onClick={handleGoogle} className="google-signin">
+      Sign In with Google
+    </button>
   );
 };
 

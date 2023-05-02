@@ -25,9 +25,9 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-container">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
+    <div className="modal-container-signup">
+      <div className="modal-content-signup">
+        <span className="close-signup" onClick={onClose}>
           &times;
         </span>
         <form onSubmit={signUp}>
@@ -37,16 +37,16 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="input"
+            className="input-signup"
           ></input>
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="input"
+            className="input-signup"
           ></input>
-          <button type="submit" className="button">
+          <button type="submit" className="button-signup">
             Sign up
           </button>
         </form>

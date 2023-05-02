@@ -9,15 +9,6 @@ import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
 
-// import getRandomRecipe from "../"
-// import TaskDetails from "../components/TaskDetails";
-// import { useTasksContext } from "../hooks/useTasksContext";
-
-// interface HomePageProps {
-//   handleStart: () => void;
-//   handleRandom: () => void;
-// }
-
 const HomePage: FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch();
@@ -32,37 +23,22 @@ const HomePage: FC = () => {
   };
 
   const [isSignUpOpen, setIsSignUpOpen] = useState<boolean>(false);
-
   const handleSignUpClose = () => {
     setIsSignUpOpen(false);
   };
-
   const handleSignUpOpen = () => {
     setIsSignUpOpen(true);
   };
 
   const [isSignInOpen, setIsSignInOpen] = useState<boolean>(false);
-
   const handleSignInClose = () => {
     setIsSignInOpen(false);
   };
-
   const handleSignInOpen = () => {
     setIsSignInOpen(true);
   };
 
-  const [isGoogleSignInOpen, setIsGoogleSignInOpen] = useState<boolean>(false);
-
-  const handleGoogleSignInClose = () => {
-    setIsGoogleSignInOpen(false);
-  };
-
-  const handleGoogleSignInOpen = () => {
-    setIsGoogleSignInOpen(true);
-  };
-
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-
   useEffect(() => {
     const auth: Auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -87,15 +63,10 @@ const HomePage: FC = () => {
       </div>
       <div className="signin-container">
         <button className="logIn-btn" onClick={handleSignInOpen}>
-          Log In
+          Sign In
         </button>
-        {isSignInOpen && <SignIn onClose={handleSignInClose} />}
-
-        <button className="google-btn" onClick={handleGoogleSignInOpen}>
-          Sign in with google
-        </button>
-        {isGoogleSignInOpen && (
-          <GoogleSignIn onClose={handleGoogleSignInClose} />
+        {isSignInOpen && (
+          <SignIn onClose={handleSignInClose} />
         )}
 
         <div className="signup-container">
@@ -103,56 +74,12 @@ const HomePage: FC = () => {
           <button className="signUp-btn" onClick={handleSignUpOpen}>
             Sign up
           </button>
+          {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
         </div>
         <AuthDetails />
       </div>
-      {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
     </div>
   );
 };
 
 export default HomePage;
-
-
-/////////////////////////////////////////////
-
-// interface Recipe {
-//   id: number;
-//   name: string;
-//   ingredients: string[];
-//   instructions: string;
-// }
-
-// const App = () => {
-//   const [recipe, setRecipe] = useState<Recipe | null>(null);
-
-//   const handleClick = async () => {
-//     const response = await fetch("https://example.com/api/recipes/random");
-//     const data = await response.json();
-//     setRecipe({
-//       id: data.id,
-//       name: data.name,
-//       ingredients: data.ingredients,
-//       instructions: data.instructions,
-//     });
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={handleClick}>Get Random Recipe</button>
-//       {recipe && (
-//         <div>
-//           <h2>{recipe.name}</h2>
-//           <ul>
-//             {recipe.ingredients.map((ingredient) => (
-//               <li key={ingredient}>{ingredient}</li>
-//             ))}
-//           </ul>
-//           <p>{recipe.instructions}</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default App;

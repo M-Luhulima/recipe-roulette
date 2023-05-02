@@ -1,6 +1,6 @@
 /* SIGNUP */
 
-.modal-container {
+.modal-container-signup {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,21 +13,21 @@
   z-index: 1;
 }
 
-.modal-content {
+.modal-content-signup {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   width: 400px;
 }
 
-.close {
+.close-signup {
   display: block;
   text-align: right;
   font-size: 24px;
   cursor: pointer;
 }
 
-.input {
+.input-signup {
   display: block;
   width: 100%;
   padding: 10px;
@@ -36,7 +36,7 @@
   border: 1px solid #ccc;
 }
 
-.button {
+.button-signup {
   background-color: #1d8296;
   color: white;
   padding: 10px 20px;
@@ -45,6 +45,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.button-signup:hover {
   background-color: #1d8296;
 }
+

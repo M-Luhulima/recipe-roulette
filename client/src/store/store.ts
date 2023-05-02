@@ -20,7 +20,9 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ThunkDispatch<any, any, Action<RecipesAction>>
 export const useRecipeDispatch = () => useDispatch<AppDispatch>();
 export const useQuizRecipeDispatch = () => useDispatch<AppDispatch>();
+export const useSaveRecipeDispatch = () => useDispatch<AppDispatch>();
 
 export const useRecipeSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useQuizRecipeSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useSaveRecipeSelector: TypedUseSelectorHook<RootState> = useSelector;
 
