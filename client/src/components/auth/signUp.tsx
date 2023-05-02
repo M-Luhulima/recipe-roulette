@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
-import "./signUp.css";
+// import "./signUp.css";
+import "../../styles/styles.css";
 
 interface SignUpProps {
   onClose: () => void;
@@ -25,9 +26,9 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-container-signup">
-      <div className="modal-content-signup">
-        <span className="close-signup" onClick={onClose}>
+    <div className="signup-popup">
+      <div className="signup-modal-content">
+        <span className="signup-popup-close" onClick={onClose}>
           &times;
         </span>
         <form onSubmit={signUp}>
@@ -37,16 +38,16 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="input-signup"
+            className="signup-popup-inputfield"
           ></input>
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="input-signup"
+            className="signup-popup-inputfield"
           ></input>
-          <button type="submit" className="button-signup">
+          <button type="submit" className="signup-popup-signup-button">
             Sign up
           </button>
         </form>

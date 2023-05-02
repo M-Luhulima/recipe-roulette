@@ -7,10 +7,10 @@
 //   return (
 //     <div>
 //       <h1>Welcome to the User Page</h1>
-//       <button className="startQuiz-btn">
+//       <button className="homepage-startquiz-button">
 //         <Link to="/quiz">Start quiz</Link>
 //       </button>
-//       <button className="getRandom-btn">
+//       <button className="homepage-getrandom-button">
 //         <Link to="/results">Get random recipe</Link>
 //       </button>
 //       <button className="favorites-btn">
@@ -45,13 +45,13 @@ const UserPage: FC = () => {
   };
 
   return (
-    <div className="UserPage">
+    <div className="userpage">
       <h1>Hungry??</h1>
-      <div className="btn-container">
-        <button className="startQuiz-btn" onClick={handleStart}>
+      <div className="homepage-buttons-container">
+        <button className="homepage-startquiz-button" onClick={handleStart}>
           Start quiz
         </button>
-        <button className="getRandom-btn" onClick={handleRandom}>
+        <button className="homepage-getrandom-button" onClick={handleRandom}>
           Get random recipe
         </button>
         <br></br>
