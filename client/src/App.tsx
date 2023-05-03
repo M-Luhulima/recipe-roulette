@@ -21,7 +21,7 @@ const App: FC = () => {
             <Route path="/random-results" element={<RandomResults />} />
             <Route path="/userpage" element={<UserPage />} />
           </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </main>
   );

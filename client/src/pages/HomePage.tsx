@@ -51,7 +51,7 @@ const HomePage: FC = () => {
 
   return (
     <section className="homepage">
-      <h1 className="homepage__title">What are we eating today?</h1>
+      <h1 className="homepage__title">What are we eating today ?</h1>
       <p className="homepage__text">Click the button to get a random recipe or answer a couple of short questions to get a recipe to match your appetite!</p>
       <article className="homepage__buttons-container">
         <button className="homepage__startquiz-button" onClick={handleStart}>

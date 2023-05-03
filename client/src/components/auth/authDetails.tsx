@@ -43,11 +43,11 @@ const AuthDetails = () => {
     <section className="auth">
       {authUser ? (
         <>
-          <p className="auth__message">Signed In</p>
+        <p className="auth__signedin">{`Hi ${authUser.displayName}`}</p>
           <button className="auth__signout-btn" onClick={userSignOut}>Sign Out</button>
         </>
       ) : (
-        <p className="auth__message"></p>
+        <p className="auth__signedout"></p>
       )}
     </section>
 

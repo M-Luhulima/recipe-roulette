@@ -26,7 +26,7 @@ main {
 }
 
 /* APP.CSS */
-  /* SIGNIN BTN */
+/* SIGNIN BTN */
   
   .homepage-signin-container {
     position: absolute;
@@ -82,9 +82,7 @@ main {
   }
   
   
-  
   /* SIGNIN */
-  
   .signin-popup {
     display: flex;
     justify-content: center;
@@ -183,8 +181,8 @@ main {
 /*   
 signup.css */
 
-  /* SIGNUP */
 
+  /* SIGNUP-POPUP */
 .signup-popup {
     display: flex;
     justify-content: center;
@@ -198,21 +196,22 @@ signup.css */
     z-index: 1;
   }
   
-  .signup-modal-content {
+  .signup-popup__content {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     width: 400px;
   }
   
-  .signup-popup-close{
+  .signup-popup__close {
     display: block;
     text-align: right;
     font-size: 24px;
     cursor: pointer;
   }
   
-  .signin-popup-inputfield {
+
+  .signup-popup__input {
     display: block;
     width: 100%;
     padding: 10px;
@@ -221,7 +220,7 @@ signup.css */
     border: 1px solid #ccc;
   }
   
-  .signin-popup-signin-button {
+  .signup-popup__signup-button {
     background-color: #1d8296;
     color: white;
     padding: 10px 20px;
@@ -230,7 +229,7 @@ signup.css */
     cursor: pointer;
   }
   
-  .button-signup:hover {
+  .signup-popup__signup-button:hover {
     background-color: #1d8296;
   }
   
@@ -238,8 +237,8 @@ signup.css */
 
   /* signin.css */
 
-  /* SIGNIN */
 
+  /* SIGNIN-POPUP */
 .signin-popup {
     display: flex;
     justify-content: center;
