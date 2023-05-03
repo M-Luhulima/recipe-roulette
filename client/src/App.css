@@ -75,8 +75,6 @@ body {
 	background-image: linear-gradient(to bottom, #eebd89, #ff9190);
 }
 
-
-
 /* HEADER */
 
 .header {
@@ -132,6 +130,7 @@ body {
 
 
 /* HOMEPAGE */
+
 .homepage__title, .userpage__title {
 	display: flex;
 	text-align: left;
@@ -213,7 +212,7 @@ body {
     border: none;
     border-radius: 20px;
     margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     cursor: pointer;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
   }
@@ -222,7 +221,7 @@ body {
     background-color: #c7c9c9;
   }
 
-  /* SIGNIN */
+  /* SIGNIN POPUP */
   
   .signin-popup {
 	display: flex;
@@ -282,9 +281,6 @@ body {
 	color: #333;
   }
   
-
-
-  
   .google-signin {
     display: flex;
     justify-content: center;
@@ -315,10 +311,6 @@ body {
     width: 18px;
   }
 
-
-
-  /* ////// */
-    
   .signin-popup__signup-message{
     margin-right: 16px;
     font-size: 14px;
@@ -338,3 +330,9 @@ body {
     text-decoration: underline;
 	background-color: rgb(214, 214, 214)
   }
+
+
+/* /////////// */
+
+
+

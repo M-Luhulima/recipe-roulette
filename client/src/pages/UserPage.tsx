@@ -15,7 +15,7 @@ const UserPage: FC = () => {
   const handleRandom = async () => {
     console.log("newRecipe: ");
     dispatch(getRecipeRandom());
-    navigate(`/results`);
+    navigate(`/random-results`);
   };
 
   return (

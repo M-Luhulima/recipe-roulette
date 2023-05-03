@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import HomePage from "./pages/HomePage";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
+import RandomResults from "./pages/RandomResults";
 import UserPage from "./pages/UserPage";
 import "./App.css";
 
@@ -17,6 +18,7 @@ const App: FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/random-results" element={<RandomResults />} />
             <Route path="/userpage" element={<UserPage />} />
           </Routes>
         <Footer />

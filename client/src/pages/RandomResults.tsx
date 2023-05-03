@@ -7,7 +7,7 @@ import { auth } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
 
 
-const Results: React.FC = () => {
+const RandomResults: React.FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
@@ -20,10 +20,6 @@ const Results: React.FC = () => {
 
   const handleHomepage = () => {
     navigate(`/`);
-  };
-
-  const handleRedo = () => {
-    navigate(`/quiz`);
   };
 
   const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
@@ -39,33 +35,30 @@ const Results: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <section className="results">
-      <button className="result__homepage-button" onClick={handleHomepage}>
+    <section className="randomresults">
+      <button className="randomresult__homepage-button" onClick={handleHomepage}>
         Return to homepage
       </button>
-      <button className="result__homepage-button" onClick={handleRedo}>
-        Redo quiz
-      </button>
-      <button className="result__getdifferent-button" onClick={handleRandom}>
-        Get a different recipe
+      <button className="randomresult__getdifferent-button" onClick={handleRandom}>
+        Get a different random recipe
       </button>
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
-        <article key={r.id} className="result">
-          <button className="result__save-btn" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
-          <h2 className="result__title">{r.title}</h2>
-          <img className="result__image" src={r.image} alt={r.title} />
-          <h3 className="result__ingredients-heading">Ingredients:</h3>
-          <ul className="result__ingredients-list">
+        <article key={r.id} className="randomresult">
+          <button className="randomresult__save-btn" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
+          <h2 className="randomresult__title">{r.title}</h2>
+          <img className="randomresult__image" src={r.image} alt={r.title} />
+          <h3 className="randomresult__ingredients-heading">Ingredients:</h3>
+          <ul className="randomresult__ingredients-list">
             {r.extendedIngredients.map((i: any) => (
-              <li key={`${r.id}-${i.id}`} className="result__ingredient">{i.original}</li>
+              <li key={`${r.id}-${i.id}`} className="randomresult__ingredient">{i.original}</li>
             ))}
           </ul>
-          <h3 className="result__instructions-heading">Instructions</h3>
-          <div className="result__instructions" dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
+          <h3 className="randomresult__instructions-heading">Instructions</h3>
+          <div className="randomresult__instructions" dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
         </article>
       ))}
     </section>
   );
 };
 
-export default Results;
+export default RandomResults;

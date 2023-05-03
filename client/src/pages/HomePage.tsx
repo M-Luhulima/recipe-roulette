@@ -18,7 +18,7 @@ const HomePage: FC = () => {
   const handleRandom = async () => {
     console.log("newRecipe: ");
     dispatch(getRecipeRandom());
-    navigate(`/results`);
+    navigate(`/random-results`);
   };
 
   const [isSignUpOpen, setIsSignUpOpen] = useState<boolean>(false);
