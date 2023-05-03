@@ -1,39 +1,3 @@
-// import { FC } from "react";
-
-// type QuestionProps = {
-//   question: string;
-//   options: string[];
-//   onOptionSelect: (option: string) => void;
-//   selectedOption?: string;
-// };
-
-// const Questions: FC<QuestionProps> = ({
-//   question,
-//   options,
-//   onOptionSelect,
-//   selectedOption,
-// }) => {
-//   return (
-//     <div>
-//       <h3>{question}</h3>
-//       {options.map((option, i) => (
-//         <div key={i}>
-//           <input
-//             type="checkbox"
-//             id={option}
-//             name={question}
-//             value={option}
-//             checked={selectedOption === option}
-//             onChange={() => onOptionSelect(option)}
-//           />
-//           <label htmlFor={option}>{option}</label>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-    
-// export default Questions;
 import { FC } from "react";
 
 type QuestionProps = {
@@ -70,10 +34,10 @@ const Questions: FC<QuestionProps> = ({
   };
 
   return (
-    <div>
-      <h3>{question}</h3>
+    <section className="questions">
+      <h3 className="questions__subtitle">{question}</h3>
       {options.map((option, i) => (
-        <div key={i}>
+        <article className="questions__options" key={i}>
           <input
             type="checkbox"
             id={option}
@@ -81,11 +45,12 @@ const Questions: FC<QuestionProps> = ({
             value={option}
             checked={selectedOption?.includes(option) || false}
             onChange={() => handleOptionSelect(option)}
+            className="questions__input"
           />
-          <label htmlFor={option}>{option}</label>
-        </div>
+          <label className="questions__label" htmlFor={option}>{option}</label>
+        </article>
       ))}
-    </div>
+    </section>
   );
 };
 

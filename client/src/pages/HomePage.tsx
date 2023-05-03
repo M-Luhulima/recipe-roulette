@@ -4,7 +4,6 @@ import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
-import GoogleSignIn from "../components/auth/googleSignIn";
 import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
@@ -51,33 +50,33 @@ const HomePage: FC = () => {
   }, [navigate]);
 
   return (
-    <div className="homepage">
-      <h1>Hungry??</h1>
-      <div className="homepage-buttons-container"> 
-        <button className="homepage-startquiz-button" onClick={handleStart}>
+    <section className="homepage">
+      <h1 className="homepage__title">Hungry??</h1>
+      <article className="homepage__buttons-container">
+        <button className="homepage__startquiz-button" onClick={handleStart}>
           Start quiz
         </button>
-        <button className="homepage-getrandom-button" onClick={handleRandom}>
+        <button className="homepage__getrandom-button" onClick={handleRandom}>
           Get random recipe
         </button>
-      </div>
-      <div className="homepage-signin-container">
-        <button className="homepage-signin-button" onClick={handleSignInOpen}>
+      </article>
+      <article className="homepage__signin-container">
+        <button className="homepage__signin-button" onClick={handleSignInOpen}>
           Sign In
         </button>
         {isSignInOpen && (
           <SignIn onClose={handleSignInClose} />
         )}
-         <div className="homepage-signup-container">
-          <p className="homepage-signup-text">Don't have an account yet?</p>
-          <button className="homepage-signup-button" onClick={handleSignUpOpen}>
+        <article className="homepage__signup-container">
+          <p className="homepage__signup-text">Don't have an account yet?</p>
+          <button className="homepage__signup-button" onClick={handleSignUpOpen}>
             Sign Up
           </button>
           {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
-        </div>
+        </article>
         <AuthDetails />
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

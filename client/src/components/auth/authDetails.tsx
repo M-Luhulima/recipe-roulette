@@ -14,10 +14,10 @@ const AuthDetails = () => {
       if (user) {
         setAuthUser(user);
         user.getIdToken()
-        .then((token) => {
-          console.log('idToken onAuthStateChanged: ', token);
-          setAuthIdTokenUser(token);
-        });
+          .then((token) => {
+            console.log('idToken onAuthStateChanged: ', token);
+            setAuthIdTokenUser(token);
+          });
 
       } else {
         setAuthUser(null);
@@ -40,15 +40,17 @@ const AuthDetails = () => {
   };
 
   return (
-    <div>
+    <section className="auth">
       {authUser ? (
         <>
-          <p>{`Signed In`}</p><button onClick={userSignOut}>Sign Out</button>
+          <p className="auth__message">Signed In</p>
+          <button className="auth__signout-btn" onClick={userSignOut}>Sign Out</button>
         </>
       ) : (
-        <p>Signed Out</p>
+        <p className="auth__message">Signed Out</p>
       )}
-    </div>
+    </section>
+
   );
 };
 

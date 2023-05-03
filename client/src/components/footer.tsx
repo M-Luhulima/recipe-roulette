@@ -1,11 +1,11 @@
 import React from "react";
 
-const Footer = (): JSX.Element => {
+const Footer: React.FC = () => {
   return (
     <footer className="footer">
-      <div className="footer-container">
-        <p className="footer-text">&copy; 2023 Recipe Roulette</p>
-      </div>
+      <article className="footer__container">
+        <p className="footer__text">&copy; 2023 Recipe Roulette</p>
+      </article>
     </footer>
   );
 };

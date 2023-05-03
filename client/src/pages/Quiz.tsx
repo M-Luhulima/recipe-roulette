@@ -40,8 +40,12 @@ const Quiz: FC = () => {
     setCurrentQuestion(currentQuestion - 1);
   };
 
+  const handleHomepage = () => {
+    navigate(`/`);
+  };
+
   return (
-    <div>
+    <section className="quiz">
       <Questions
         question={quizData[currentQuestion].question}
         options={quizData[currentQuestion].options}
@@ -52,9 +56,15 @@ const Quiz: FC = () => {
       <br/>
       {answers.join(' - ')}
       <br/>
-      {currentQuestion > 0 ? <button onClick={handleBack}>Back</button> : ''}
-      <button onClick={handleNext}>Next</button>
-    </div>
+      <button className="quiz__quit-button" onClick={handleHomepage}>
+          X
+        </button>
+<article className="quiz__buttons-container">
+      {currentQuestion > 0 ? <button className="quiz__back-button"onClick={handleBack}>Back</button> : ''}
+      <button className="quiz__next-button" onClick={handleNext}>Next</button>
+</article>
+
+    </section>
   );
 };
 

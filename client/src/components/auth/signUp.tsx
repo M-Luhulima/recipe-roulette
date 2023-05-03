@@ -27,33 +27,33 @@ const SignUp: React.FC<SignUpProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="signup-popup">
-      <div className="signup-modal-content">
-        <span className="signup-popup-close" onClick={onClose}>
+    <section className="signup-popup">
+      <article className="signup-popup__content">
+        <span className="signup-popup__close" onClick={onClose}>
           &times;
         </span>
-        <form onSubmit={signUp}>
-          <h1>Create Account</h1>
+        <form onSubmit={signUp} className="signup-popup__form">
+          <h1 className="signup-popup__title">Create Account</h1>
           <input
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="signup-popup-inputfield"
+            className="signup-popup__input"
           ></input>
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="signup-popup-inputfield"
+            className="signup-popup__input"
           ></input>
-          <button type="submit" className="signup-popup-signup-button">
+          <button type="submit" className="signup-popup__signup-button">
             Sign up
           </button>
         </form>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 

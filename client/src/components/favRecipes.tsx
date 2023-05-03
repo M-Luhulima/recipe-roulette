@@ -1,6 +1,5 @@
 import { FC, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Recipe } from "../models/types";
 import { auth } from "../services/firebase";
 import { getSavedRecipes, updateSavedRecipe, deleteRecipe } from "../store/reducers/recipesReducer";
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from "../store/store";
@@ -38,24 +37,24 @@ const FavRecipes: FC = () => {
   return (
     <section className="favorites">
       <h2 className="favorites__title">Favorite Recipes</h2>
-      <button onClick={() => handleGetSavedRecipes()}>Show favorite recipes</button>
+      <button className="favorites__button" onClick={() => handleGetSavedRecipes()}>Show favorite recipes</button>
 
       {!Array.isArray(favRecipes) ? '' : favRecipes.map((r: IFavoriteRecipe) => (
-        <div key={`${r.userId}-${r.recipeId}`}>
-          <h2>{r.recipe.title}</h2>
-          <p>{r.isCooked ? 'YES you cooked it' : 'still need to cook this'}</p>
-          <img src={r.recipe.image} alt={r.recipe.title} />
-          <button onClick={() => handleUpdateSavedRecipes(r.recipeId, !r.isCooked, '')}>{r.isCooked ? 'Uncook this it' : 'Cooked it'}</button>
-          <button onClick={() => handleDeleteRecipe(r.recipeId)}>Delete recipe</button>
-          <h3>Ingredients:</h3>
-          <ul>
+        <article key={`${r.userId}-${r.recipeId}`} className="favorites__recipe">
+          <h2 className="favorites__recipe-title">{r.recipe.title}</h2>
+          <p className="favorites__recipe-status">{r.isCooked ? 'YES you cooked it' : 'still need to cook this'}</p>
+          <img className="favorites__recipe-image" src={r.recipe.image} alt={r.recipe.title} />
+          <button className="favorites__recipe-updatebutton" onClick={() => handleUpdateSavedRecipes(r.recipeId, !r.isCooked, '')}>{r.isCooked ? 'Uncook this it' : 'Cooked it'}</button>
+          <button className="favorites__recipe-deletebutton" onClick={() => handleDeleteRecipe(r.recipeId)}>Delete recipe</button>
+          <h3 className="favorites__recipe-subtitle">Ingredients:</h3>
+          <ul className="favorites__recipe-list">
             {r.recipe.extendedIngredients.map((i: any) => (
-              <li key={`${r.recipe.id}-${i.id}`}>{i.original}</li>
+              <li className="favorites__recipe-list-item" key={`${r.recipe.id}-${i.id}`}>{i.original}</li>
             ))}
           </ul>
-          <h3>Instructions</h3>
-          <div dangerouslySetInnerHTML={{ __html: r.recipe.instructions }}></div>
-        </div>
+          <h3 className="favorites__recipe-subtitle">Instructions</h3>
+          <section className="favorites__recipe-instructions" dangerouslySetInnerHTML={{ __html: r.recipe.instructions }}></section>
+        </article>
       ))}
 
     </section>

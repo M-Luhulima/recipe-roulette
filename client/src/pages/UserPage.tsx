@@ -1,30 +1,4 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import AuthDetails from "../components/auth/authDetails";
-// // import FavRecipes from "../components/favRecipes";
-
-// const UserPage = () => {
-//   return (
-//     <div>
-//       <h1>Welcome to the User Page</h1>
-//       <button className="homepage-startquiz-button">
-//         <Link to="/quiz">Start quiz</Link>
-//       </button>
-//       <button className="homepage-getrandom-button">
-//         <Link to="/results">Get random recipe</Link>
-//       </button>
-//       <button className="favorites-btn">
-//         <Link to="/favorites">Favorites</Link>
-//       </button>
-//       <AuthDetails />
-//       {/* <FavRecipes /> */}
-//     </div>
-//   );
-// };
-
-// export default UserPage;
-
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
@@ -45,23 +19,20 @@ const UserPage: FC = () => {
   };
 
   return (
-    <div className="userpage">
-      <h1>Hungry??</h1>
-      <div className="homepage-buttons-container">
-        <button className="homepage-startquiz-button" onClick={handleStart}>
+    <section className="userpage">
+      <h1 className="userpage__title">Hungry??</h1>
+      <article className="userpage__buttons-container">
+        <button className="userpage__startquiz-button" onClick={handleStart}>
           Start quiz
         </button>
-        <button className="homepage-getrandom-button" onClick={handleRandom}>
+        <button className="userpage__getrandom-button" onClick={handleRandom}>
           Get random recipe
         </button>
-        <br></br>
         <FavRecipes />
-        <br></br>
         <AuthDetails />
-        <br></br>
-      </div>
-      </div>
-)
+      </article>
+    </section>
+  )
 };
 
 export default UserPage;

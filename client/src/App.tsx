@@ -10,7 +10,7 @@ import "./App.css";
 
 const App: FC = () => {
   return (
-    <main className="App">
+    <main className="recipe-roulette">
       <BrowserRouter>
         <Header />
           <Routes>

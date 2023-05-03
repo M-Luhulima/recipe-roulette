@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react';
-import { AppDispatch, RootState, useQuizRecipeDispatch, useQuizRecipeSelector } from '../store/store';
-import { getQuizRecipe } from '../store/reducers/recipesReducer';
+import React from 'react';
+import { RootState, useQuizRecipeSelector } from '../store/store';
 
 
 const QuizRecipes: React.FC = () => {
-    // const dispatch: AppDispatch = useQuizRecipeDispatch()
   const { recipes } = useQuizRecipeSelector((state: RootState) => state.recipes);
 
-  // useEffect(() => {
-  //   dispatch(getQuizRecipe());
-  // }, [dispatch]);
 
   return (
-    <div>
+    <section className="quizrecipes">
         {recipes[0] && recipes[0].title ? JSON.stringify(recipes[0].title) : ''}
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
         <React.Fragment key={r.id}>
-          <h6>{r.name}</h6>
+          <h6 className="quizrecipes__name">{r.name}</h6>
         </React.Fragment>
       ))}
-    </div>
+    </section>
   );
 };
 

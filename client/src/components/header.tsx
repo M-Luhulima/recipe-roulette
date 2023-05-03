@@ -1,22 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Header = (): JSX.Element => {
-  const handleLogout = () => {
-    // logout code
-  };
-
+const Header: React.FC = () => {
   return (
     <header className="header">
-      <div className="header-content">
-        <Link className="a" to="/">
-          <h1 className="header-title">Recipe Roulette</h1>
+      <article className="header__content">
+        <Link className="header__link" to="/">
+          <h1 className="header__title">Recipe Roulette</h1>
         </Link>
-      </div>
-      <div className="header-right">
-          {/* <button className="login-button" onClick={handleLogout}>
-            Login
-          </button> */}
-        </div>
+      </article>
     </header>
   );
 };
