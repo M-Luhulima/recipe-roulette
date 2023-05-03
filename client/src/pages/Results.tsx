@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
 import { Recipe } from '../models/types';
-import { getRecipeRandom, postSaveRecipe } from '../store/reducers/recipesReducer';
+import { getQuizRecipe, getRecipeRandom, postSaveRecipe } from '../store/reducers/recipesReducer';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
 import AuthDetails from "../components/auth/authDetails";
+import { QuizAnswers } from './Quiz';
 
 
 const Results: React.FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useRecipeDispatch();
+  const [answers] = useState<QuizAnswers>([]);
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
   const [user] = useAuthState(auth);
 
@@ -19,7 +21,10 @@ const Results: React.FC = () => {
   };
 
   const handleRedo = () => {
-    navigate(`/quiz`);
+    // re-calls the api with same answers
+    console.log('handleRedo answers: ', answers);
+    dispatch(getQuizRecipe(answers));
+    // navigate(`/quiz`);
   };
 
   const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
@@ -40,7 +45,7 @@ const Results: React.FC = () => {
         Return to homepage
       </button>
       <button className="result__homepage-button" onClick={handleRedo}>
-        Redo quiz
+        Skip recipe
       </button>
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
         <article key={r.id} className="result">

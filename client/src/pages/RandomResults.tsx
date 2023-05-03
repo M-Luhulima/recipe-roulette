@@ -41,11 +41,11 @@ const RandomResults: React.FC = () => {
         Return to homepage
       </button>
       <button className="randomresult__getdifferent-button" onClick={handleRandom}>
-        Get a different recipe
+        Next Recipe
       </button>
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
         <article key={r.id} className="randomresult">
-          <button className="randomresult__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
+          <button className="randomresult__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save Recipe</button>
           <h2 className="randomresult__title">{r.title}</h2>
           <img className="randomresult__image" src={r.image} alt={r.title} />
           <h3 className="randomresult__ingredients-heading">Ingredients:</h3>
