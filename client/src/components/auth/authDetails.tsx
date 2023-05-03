@@ -47,7 +47,7 @@ const AuthDetails = () => {
           <button className="auth__signout-btn" onClick={userSignOut}>Sign Out</button>
         </>
       ) : (
-        <p className="auth__message">Signed Out</p>
+        <p className="auth__message"></p>
       )}
     </section>
 

@@ -20,7 +20,8 @@ const UserPage: FC = () => {
 
   return (
     <section className="userpage">
-      <h1 className="userpage__title">Hungry??</h1>
+      <h1 className="userpage__title">What are we eating today?</h1>
+      <p className="userpage__text">Click the button to get a random recipe or answer a couple of short questions to get a recipe to match your appetite!</p>
       <article className="userpage__buttons-container">
         <button className="userpage__startquiz-button" onClick={handleStart}>
           Start quiz

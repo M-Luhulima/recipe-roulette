@@ -1,45 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
 /* CSS RESET */
+/* Reset all box-sizing to border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove all margins and paddings */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, 
+center, dl, dt, dd, ol, ul, li, fieldset, form, 
+label, legend, table, caption, tbody, tfoot,
+thead, tr, th, td, article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
+/* Set default font family and font-size */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove hyperlink text-decoration */
+a {
+  text-decoration: none;
+}
+
+/* Remove table border spacing */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* END RESET */
+
+/* Mobile first */
+
+/* BODY */
+
+body {
+	font-family: "Montserrat";
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: #7cc0e2;
+	/* fallback color if gradients are not supported */
+	background-image: linear-gradient(to bottom, #eebd89, #ff9190);
+}
+
+
+
+/* HEADER */
+
+.header {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 0px;
+  margin-left: 1rem;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.header__content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__title {
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.header__link {
+	text-decoration: none;
+	color: #297297;
+	font-size: 17px;
+	margin-right: 20px;
+}
+
+/* FOOTER */
+
+/* TODO footer should be always at bottom.  */
+
+.footer {
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+}
+
+.footer__text {
+  font-size: 14px;
+  color: rgb(76, 80, 80);
+}
+
+
+/* HOMEPAGE */
+.homepage__title, .userpage__title {
+	display: flex;
+	text-align: left;
+  line-height: 3.5rem;
+	font-size: 4rem;
+	margin-top: 8rem;
+  margin-left: 1rem;
+	margin-bottom: 1rem;
+	color: rgb(248, 250, 252);
+}
+
+.homepage__text, .userpage__text {
+	font-size: 1rem;
+	color: rgb(248, 250, 252);
+	text-align: left;
+  margin-left: 1rem;
+}
+
+.homepage__buttons-container, .userpage__buttons-container {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .homepage__startquiz-button,
+  .homepage__getrandom-button, .userpage__startquiz-button, .userpage__getrandom-button {
+	background-color: rgb(248, 250, 252);
+	color: #ff9190;
+	font-size: 1.3rem;
+	font-weight: bold;
+	padding: 0.7rem 1.6rem;
+	border: none;
+	border-radius: 20px;
+	margin-top: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 0.7rem;
+	cursor: pointer;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .homepage__getrandom-button, .userpage__getrandom-button {
+	background-color: transparent;
+	color: rgb(248, 250, 252);
+  border: 1px solid white;
+  }
+
+  .homepage__getrandom-button:hover  {
+    background-color: rgb(239, 239, 239);
+  }
+
+  /* TODO hover fixen */
+
+  .homepage__startquiz-button:hover  {
+    background-color: rgb(239, 239, 239);
+  }
+
+  
+  /* SIGNIN BTN */
+  
+  .homepage__signin-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .homepage__signin-button {
+    background-color: rgb(220, 220, 220);
+    color: rgb(113, 113, 113);
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding: 0.3rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .homepage__signin-button:hover {
+    background-color: #c7c9c9;
+  }
+
+  /* SIGNIN */
+  
+  .signin-popup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+  }
+  
+  .signin-popup__content {
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 20px;
+	border-radius: 5px;
+	width: 400px;
+  }
+  
+  .signin-popup__close-button {
+	display: block;
+	text-align: right;
+	font-size: 24px;
+	cursor: pointer;
+  }
+  
+  .signin-popup__input {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+  }
+  
+  .signin-popup__signin-button {
+	background-color: #1d8296;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 0.5rem;
+  }
+  
+  .signin-popup__signin-button:hover {
+	background-color: #1d8296;
+  }
+  
+  .signin-popup__separator{
+	margin: 1rem 0;
+	text-align: center;
+	font-weight: lighter;
+	font-size: 1rem;
+	color: #333;
+  }
+  
+
+
+  
+  .google-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 3px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    color: #6e6868;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+    background-color: #fff;
+  }
+  
+  .google-signin:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+  
+  .google-signin img {
+    margin-right: 8px;
+    width: 18px;
+  }
+
+
+
+  /* ////// */
+    
+  .signin-popup__signup-message{
+    margin-right: 16px;
+    font-size: 14px;
+  }
+  
+  .signin-popup__signup-button{
+    background-color: transparent;
+    color: #1d8296;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .signin-popup__signup-button:hover {
+    text-decoration: underline;
+	background-color: rgb(214, 214, 214)
+  }

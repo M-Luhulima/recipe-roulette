@@ -51,7 +51,8 @@ const HomePage: FC = () => {
 
   return (
     <section className="homepage">
-      <h1 className="homepage__title">Hungry??</h1>
+      <h1 className="homepage__title">What are we eating today?</h1>
+      <p className="homepage__text">Click the button to get a random recipe or answer a couple of short questions to get a recipe to match your appetite!</p>
       <article className="homepage__buttons-container">
         <button className="homepage__startquiz-button" onClick={handleStart}>
           Start quiz
@@ -62,18 +63,18 @@ const HomePage: FC = () => {
       </article>
       <article className="homepage__signin-container">
         <button className="homepage__signin-button" onClick={handleSignInOpen}>
-          Sign In
+          Log In
         </button>
         {isSignInOpen && (
           <SignIn onClose={handleSignInClose} />
         )}
-        <article className="homepage__signup-container">
+        {/* <article className="homepage__signup-container">
           <p className="homepage__signup-text">Don't have an account yet?</p>
           <button className="homepage__signup-button" onClick={handleSignUpOpen}>
             Sign Up
           </button>
           {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
-        </article>
+        </article> */}
         <AuthDetails />
       </article>
     </section>

@@ -37,7 +37,6 @@ const SignIn: React.FC<SignInProps> = ({ onClose }) => {
     <button className="signin-popup__close-button" onClick={onClose}>
       &times;
     </button>
-    <h1 className="signin-popup__title">Sign In</h1>
     <GoogleSignIn onClose={onClose} />
     <article className="signin-popup__separator">- Or with email and password -</article>
     <form onSubmit={signIn} className="signin-popup__form">
