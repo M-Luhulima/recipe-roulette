@@ -1,12 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import { User } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Dispatch } from 'redux';
 import { Recipe } from '../../models/types';
 import { QuizAnswers } from '../../pages/Quiz';
 import { auth } from '../../services/firebase';
-
-// import { GET_RECIPES, GET_RECIPES_SUCCESS, GET_RECIPES_ERROR } from '../types'
 
 // Define the action type constants
 enum ActionTypes {
@@ -32,7 +29,7 @@ enum ActionTypes {
 
 export interface DataState {
     recipes: any[],
-    //TODO: add favRecipes here
+    favRecipes: any[],
     loading: boolean, error: string | null,
 }
 
@@ -154,7 +151,7 @@ export interface UpdateSavedRecipesErrorAction {
 // state    
 const initialState: DataState = {
     recipes: [],
-    //TODO: and add favRecipes here
+    favRecipes: [],
     loading: true,
     error: null,
 }
@@ -221,16 +218,13 @@ export const recipeReducer = (state = initialState, action: RecipesAction): Data
             return {
                 ...state,
                 error: null,
-
-                    //TODO: add favRecipes here
-                //favRecipes: action.payload,
                 loading: true,
             };
         case ActionTypes.GET_SAVEDRECIPES_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                recipes: action.payload,
+                favRecipes: action.payload,
                 error: null,
             };
         case ActionTypes.GET_SAVEDRECIPES_ERROR:
@@ -249,7 +243,6 @@ export const recipeReducer = (state = initialState, action: RecipesAction): Data
             return {
                 ...state,
                 loading: false,
-                recipes: action.payload,
                 error: null,
             };
         case ActionTypes.DELETE_SAVEDRECIPES_ERROR:
@@ -268,7 +261,6 @@ export const recipeReducer = (state = initialState, action: RecipesAction): Data
             return {
                 ...state,
                 loading: false,
-                recipes: action.payload,
                 error: null,
             };
         case ActionTypes.UPDATE_SAVEDRECIPES_ERROR:
@@ -279,7 +271,7 @@ export const recipeReducer = (state = initialState, action: RecipesAction): Data
             };
         default:
             console.log('Unhandled action type:', action);
-            return state
+            return state;
     }
 }
 
@@ -430,25 +422,25 @@ export const getSavedRecipesError = (error: string): GetSavedRecipesErrorAction 
 }
 export const getSavedRecipes = () => {
     return async (dispatch: Dispatch<RecipesAction>) => {
-      dispatch({ type: ActionTypes.GET_SAVEDRECIPES });
-  
-      try {
-        const { data } = await axios.get('/api/user/favorites', {
-          headers: {
-            idToken: await auth.currentUser?.getIdToken(),
-          },
-        });
-  
-        dispatch({
-          type: ActionTypes.GET_SAVEDRECIPES_SUCCESS,
-          payload: data,
-        });
-      } catch (error) {
-        console.error('Error getting saved recipes', error);
-        dispatch(getSavedRecipesError(`${error}`));
-      }
+        dispatch({ type: ActionTypes.GET_SAVEDRECIPES });
+
+        try {
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/favorites`, {
+                headers: {
+                    idToken: await auth.currentUser?.getIdToken(),
+                },
+            });
+
+            dispatch({
+                type: ActionTypes.GET_SAVEDRECIPES_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            console.error('Error getting saved recipes', error);
+            dispatch(getSavedRecipesError(`${error}`));
+        }
     };
-  };
+};
 
 // Here starts deleteSavedRecipe
 export const deleteRecipesRequest = (): DeleteSavedRecipesRequestAction => {
@@ -471,7 +463,7 @@ export const deleteRecipesError = (error: string): DeleteSavedRecipesErrorAction
     };
 }
 
-export const deleteRecipe = (recipeId: number, user: User) => {
+export const deleteRecipe = (recipeId: string, user: User) => {
     return async (dispatch: Dispatch<RecipesAction>) => {
         console.log('deleteRecipe');
         dispatch(deleteRecipesRequest());
@@ -515,50 +507,28 @@ export const updateRecipesError = (error: string): UpdateSavedRecipesErrorAction
 
 export const updateSavedRecipe = (recipeId: string, isCooked: boolean, review?: string) => {
     return async (dispatch: Dispatch) => {
-      dispatch({ type: ActionTypes.UPDATE_SAVEDRECIPES });
-  
-      try {
-        const { data } = await axios.patch(
-          `/api/user/favorites/${recipeId}`,
-          { isCooked, review },
-          {
-            headers: {
-              idToken: await auth.currentUser?.getIdToken(),
-            },
-          }
-        );
-  
-        dispatch({
-          type: ActionTypes.UPDATE_SAVEDRECIPES_SUCCESS,
-          payload: data,
-        });
-      } catch (error) {
-        console.error('Error updating recipe', error);
-        dispatch(updateRecipesError(`${error}`));
-      }
+        dispatch({ type: ActionTypes.UPDATE_SAVEDRECIPES });
+
+        try {
+            const { data } = await axios.patch(`${process.env.REACT_APP_API_URL}/api/user/favorites/${recipeId}`,
+                {
+                    isCooked,
+                    review
+                },
+                {
+                    headers: {
+                        idToken: await auth.currentUser?.getIdToken(),
+                    },
+                }
+            );
+
+            dispatch({
+                type: ActionTypes.UPDATE_SAVEDRECIPES_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            console.error('Error updating recipe', error);
+            dispatch(updateRecipesError(`${error}`));
+        }
     };
-  };
-
-
-// import {GET_USERS} from '../types'
-
-// const initialState = {
-//     users:[],
-//     loading:true
-// }
-
-// export default function userReducer(state = initialState, action: any){
-
-//     switch(action.type){
-
-//         case GET_USERS:
-//         return {
-//             ...state,
-//             users:action.payload,
-//             loading:false
-
-//         }
-//         default: return state
-//     }
-
-// }
+};
