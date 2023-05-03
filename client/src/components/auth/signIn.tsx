@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { auth } from "../../services/firebase";
 import GoogleSignIn from "./googleSignIn";
 import SignUp from "./signUp";
-import "./signIn.css";
+// import "./signIn.css";
+import "../../styles/styles.css";
 
 interface SignInProps {
   onClose: () => void;
@@ -31,36 +32,36 @@ const SignIn: React.FC<SignInProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-container">
-      <div className="modal-content">
-        <button className="close" onClick={onClose}>
+    <div className="signin-popup">
+      <div className="signin-modal-content">
+        <button className="signin-popup-close" onClick={onClose}>
           &times;
         </button>
         <h1>Sign In</h1>
         <GoogleSignIn onClose={onClose} />
-        <div className="or-separator">- Or with email and password -</div>
+        <div className="signin-popup-separator">- Or with email and password -</div>
         <form onSubmit={signIn}>
           <input
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="input"
+            className="signin-popup-inputfield"
           ></input>
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="input"
+            className="signin-popup-inputfield"
           ></input>
-          <button type="submit" className="button">
+          <button type="submit" className="signin-popup-signin-button">
             Sign In
           </button>
         </form>
-        <div className="signup-container">
+        <div className="homepage-signup-container">
           <p>Don't have an account yet?</p>
-          <button className="signUp-btn" onClick={toggleSignUp}>
+          <button className="homepage-signup-button" onClick={toggleSignUp}>
             Sign up
           </button>
           {showSignUp && <SignUp onClose={onClose} />}

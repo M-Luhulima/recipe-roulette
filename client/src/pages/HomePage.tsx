@@ -51,28 +51,28 @@ const HomePage: FC = () => {
   }, [navigate]);
 
   return (
-    <div className="HomePage">
+    <div className="homepage">
       <h1>Hungry??</h1>
-      <div className="btn-container">
-        <button className="startQuiz-btn" onClick={handleStart}>
+      <div className="homepage-buttons-container">
+        <button className="homepage-startquiz-button" onClick={handleStart}>
           Start quiz
         </button>
-        <button className="getRandom-btn" onClick={handleRandom}>
+        <button className="homepage-getrandom-button" onClick={handleRandom}>
           Get random recipe
         </button>
       </div>
-      <div className="signin-container">
-        <button className="logIn-btn" onClick={handleSignInOpen}>
+      <div className="homepage-signin-container">
+        <button className="homepage-signin-button" onClick={handleSignInOpen}>
           Sign In
         </button>
         {isSignInOpen && (
           <SignIn onClose={handleSignInClose} />
         )}
 
-        <div className="signup-container">
-          <p>Don't have an account yet?</p>
-          <button className="signUp-btn" onClick={handleSignUpOpen}>
-            Sign up
+        <div className="homepage-signup-container">
+          <p className="homepage-signup-text">Don't have an account yet?</p>
+          <button className="homepage-signup-button" onClick={handleSignUpOpen}>
+            Sign Up
           </button>
           {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
         </div>
