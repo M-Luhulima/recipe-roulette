@@ -5,6 +5,7 @@ import { getRecipeRandom, postSaveRecipe } from '../store/reducers/recipesReduce
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
+import AuthDetails from "../components/auth/authDetails";
 
 
 const Results: React.FC = () => {
@@ -12,11 +13,6 @@ const Results: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
   const [user] = useAuthState(auth);
-
-  const handleRandom = async () => {
-    console.log("newRecipe: ");
-    dispatch(getRecipeRandom());
-  }
 
   const handleHomepage = () => {
     navigate(`/`);
@@ -46,12 +42,9 @@ const Results: React.FC = () => {
       <button className="result__homepage-button" onClick={handleRedo}>
         Redo quiz
       </button>
-      <button className="result__getdifferent-button" onClick={handleRandom}>
-        Get a different recipe
-      </button>
       {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
         <article key={r.id} className="result">
-          <button className="result__save-btn" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
+          <button className="result__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
           <h2 className="result__title">{r.title}</h2>
           <img className="result__image" src={r.image} alt={r.title} />
           <h3 className="result__ingredients-heading">Ingredients:</h3>
@@ -60,8 +53,9 @@ const Results: React.FC = () => {
               <li key={`${r.id}-${i.id}`} className="result__ingredient">{i.original}</li>
             ))}
           </ul>
-          <h3 className="result__instructions-heading">Instructions</h3>
+          <h3 className="result__instructions-heading">Instructions:</h3>
           <div className="result__instructions" dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
+          <AuthDetails />
         </article>
       ))}
     </section>

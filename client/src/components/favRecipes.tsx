@@ -53,7 +53,7 @@ const FavRecipes: FC = () => {
               <li className="favorites__recipe-list-item" key={`${r.recipe.id}-${i.id}`}>{i.original}</li>
             ))}
           </ul>
-          <h3 className="favorites__recipe-subtitle">Instructions</h3>
+          <h3 className="favorites__recipe-subtitle">Instructions:</h3>
           <section className="favorites__recipe-instructions" dangerouslySetInnerHTML={{ __html: r.recipe.instructions }}></section>
         </article>
       ))}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Questions from "../components/questions";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import { getQuizRecipe } from "../store/reducers/recipesReducer";
+import AuthDetails from "../components/auth/authDetails";
 
 
 export type QuizAnswers = Array<string[]>
@@ -62,6 +63,7 @@ const Quiz: FC = () => {
 <article className="quiz__buttons-container">
       {currentQuestion > 0 ? <button className="quiz__back-button"onClick={handleBack}>Back</button> : ''}
       <button className="quiz__next-button" onClick={handleNext}>Next</button>
+      <AuthDetails />
 </article>
 
     </section>

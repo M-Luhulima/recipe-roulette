@@ -19,7 +19,7 @@ export const quizData = [
         "Paleo"],
     },
     {
-      question: "Any allergies/intolerances we should know of?",
+      question: "Any intolerances we should know of?",
       options: [
         "Dairy",
         "Egg",
