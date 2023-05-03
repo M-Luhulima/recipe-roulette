@@ -2,7 +2,7 @@ import { GoogleAuthProvider, signInWithPopup, Auth } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
 // import "./signIn.css";
-import "../../styles/styles.css";
+// import "../../styles/styles.css";
 
 interface GoogleSignInProps {
   onClose: () => void;

@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import UserPage from "./pages/UserPage";
+import "./App.css";
 
 const App: FC = () => {
   return (

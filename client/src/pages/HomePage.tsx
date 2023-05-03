@@ -53,7 +53,7 @@ const HomePage: FC = () => {
   return (
     <div className="homepage">
       <h1>Hungry??</h1>
-      <div className="homepage-buttons-container">
+      <div className="homepage-buttons-container"> 
         <button className="homepage-startquiz-button" onClick={handleStart}>
           Start quiz
         </button>
@@ -68,8 +68,7 @@ const HomePage: FC = () => {
         {isSignInOpen && (
           <SignIn onClose={handleSignInClose} />
         )}
-
-        <div className="homepage-signup-container">
+         <div className="homepage-signup-container">
           <p className="homepage-signup-text">Don't have an account yet?</p>
           <button className="homepage-signup-button" onClick={handleSignUpOpen}>
             Sign Up

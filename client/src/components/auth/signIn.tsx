@@ -4,7 +4,7 @@ import { auth } from "../../services/firebase";
 import GoogleSignIn from "./googleSignIn";
 import SignUp from "./signUp";
 // import "./signIn.css";
-import "../../styles/styles.css";
+// import "../../styles/styles.css";
 
 interface SignInProps {
   onClose: () => void;
