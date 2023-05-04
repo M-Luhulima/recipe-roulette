@@ -4,6 +4,7 @@ import AuthDetails from "../components/auth/authDetails";
 
 // check of qua styling iets met header__content wordt gedaan
 
+
 const Header: React.FC = () => {
   return (
     <header className="header">

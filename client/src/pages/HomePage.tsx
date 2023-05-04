@@ -4,7 +4,7 @@ import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
-// import AuthDetails from "../components/auth/authDetails";
+import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
 import logoIcon from '../../src/assets/images/logoIcon.png';
@@ -52,7 +52,6 @@ const HomePage: FC = () => {
 
   return (
     <section className="homepage">
-            {/* <img src={logoIcon} className="homepage-logo" alt="logoIcon" /> */}
             <img src={logoIcon} className="homepage-logo-large" alt="logoIcon" />
       <h1 className="homepage__title">What are we eating today ?</h1>
       <p className="homepage__text">Click the button to get a random recipe or answer a couple of short questions to get a recipe to match your appetite!</p>
@@ -71,14 +70,6 @@ const HomePage: FC = () => {
         {isSignInOpen && (
           <SignIn onClose={handleSignInClose} />
         )}
-        {/* <article className="homepage__signup-container">
-          <p className="homepage__signup-text">Don't have an account yet?</p>
-          <button className="homepage__signup-button" onClick={handleSignUpOpen}>
-            Sign Up
-          </button>
-          {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
-        </article> */}
-        {/* <AuthDetails /> */}
       </article>
     </section>
   );

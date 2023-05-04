@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
 import { Recipe } from '../models/types';
-import { getQuizRecipe, getRecipeRandom, postSaveRecipe } from '../store/reducers/recipesReducer';
+import { getQuizRecipe, postSaveRecipe } from '../store/reducers/recipesReducer';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../services/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ const Results: React.FC = () => {
   const [answers] = useState<QuizAnswers>([]);
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
   const [user] = useAuthState(auth);
+  const [errorMessage, setErrorMessage] = useState(""); 
 
   const handleHomepage = () => {
     navigate(`/`);
@@ -24,12 +25,12 @@ const Results: React.FC = () => {
     // re-calls the api with same answers
     console.log('handleRedo answers: ', answers);
     dispatch(getQuizRecipe(answers));
-    // navigate(`/quiz`);
   };
 
   const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
     if (!user) {
       console.error('User not logged in');
+      setErrorMessage("Please log in on the homepage.");
       return;
     }
 
@@ -53,6 +54,9 @@ const Results: React.FC = () => {
         {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
           <article key={r.id} className="result">
             <button className="result__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save</button>
+            <article className="errorMessage">
+          {errorMessage && <p className="errorMessage__text">{errorMessage}</p>}
+        </article>
             <h2 className="result__title">{r.title}</h2>
             <img className="result__image" src={r.image} alt={r.title} />
             <h3 className="result__ingredients-heading">Ingredients:</h3>

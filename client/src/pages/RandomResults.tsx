@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState, useRecipeDispatch, useRecipeSelector } from '../store/store';
 import { Recipe } from '../models/types';
 import { getRecipeRandom, postSaveRecipe } from '../store/reducers/recipesReducer';
@@ -13,6 +13,7 @@ const RandomResults: React.FC = () => {
   const dispatch: AppDispatch = useRecipeDispatch();
   const { recipes } = useRecipeSelector((state: RootState) => state.recipes);
   const [user] = useAuthState(auth);
+  const [errorMessage, setErrorMessage] = useState(""); 
 
   const handleRandom = async () => {
     console.log("newRecipe: ");
@@ -26,6 +27,7 @@ const RandomResults: React.FC = () => {
   const handleSaveRecipe = async (recipeId: number, recipe: Recipe) => {
     if (!user) {
       console.error('User not logged in');
+      setErrorMessage("Please log in on the homepage.");
       return;
     }
 
@@ -49,6 +51,9 @@ const RandomResults: React.FC = () => {
         {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
           <article key={r.id} className="randomresult">
             <button className="randomresult__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save</button>
+            <article className="errorMessage">
+          {errorMessage && <p className="errorMessage__text">{errorMessage}</p>}
+        </article>
             <h2 className="randomresult__title">{r.title}</h2>
             <img className="randomresult__image" src={r.image} alt={r.title} />
             <h3 className="randomresult__ingredients-heading">Ingredients:</h3>

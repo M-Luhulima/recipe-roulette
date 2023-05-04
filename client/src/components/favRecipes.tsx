@@ -41,7 +41,7 @@ const FavRecipes: FC = () => {
       <br/>
       <article className="favorites__container">
       <h2 className="favorites__title">Favorite Recipes</h2>
-      <button className="favorites__button" onClick={() => handleGetSavedRecipes()}>Show favorite recipes</button>
+      <button className="favorites__button" onClick={() => handleGetSavedRecipes()}>Show favorites</button>
       </article>
       <br/>
       <div ref={ref}></div>

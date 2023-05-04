@@ -131,7 +131,7 @@ body {
 }
 
 /* HEADERLOGO */
-.homepage-logo {
+/* .homepage-logo {
   height: 20vmin;
   position: absolute;
   top: 10%;
@@ -154,7 +154,7 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .homepage-logo-large {
   height: 30vmin;
@@ -215,7 +215,6 @@ body {
 
 .homepage__title,
 .userpage__title {
-  display: flex;
   text-align: left;
   line-height: 3.5rem;
   font-size: 4rem;
@@ -296,6 +295,9 @@ body {
   
   .homepage__signin-button {
     background-color: rgb(77, 179, 181);
+    /* position: absolute;
+    top: 2.5rem;
+    right: 1rem; */
     color: rgb(255, 255, 255);
     text-decoration: bold;
     font-size: 1.2rem;
@@ -372,7 +374,7 @@ body {
   }
   
   .signin-popup__signin-button {
-	background-color: #126171;
+	background-color:#1d8296;
 	color: white;
 	padding: 10px 20px;
 	border: none;
@@ -584,7 +586,7 @@ body {
 .favorites__recipe {
   flex-basis: 30rem;
   padding: 0.5rem;
-  background-color: rgba(237, 237, 237, 0.6);
+  background-color: rgba(245, 245, 245, 0.7);
   border-radius: 20px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin: 1rem 0.5rem;
@@ -742,17 +744,95 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1)
 }
 
+.errorMessage__text {
+  font-style: italic;
+  color: rgb(56, 56, 56);
+}
+
   /*tablets*/
 @media (min-width: 481px) and (max-width: 768px) {
-  /* … */
+  .homepage__title, .userpage__title {
+  text-align: center;
 }
+
+.homepage__text,
+.userpage__text {
+  font-size: 1rem;
+  color: rgb(248, 250, 252);
+  text-align: center;
+  margin-left: 1rem;
+}
+.homepage-logo-large {
+  height: 30vmin;
+  position: absolute;
+  top: 67%;
+  left: 34%;
+  transform: translate(-50%, -50%);
+  filter: invert(1);
+  pointer-events: none;
+}
+}
+
 
   /*laptops*/
   @media (min-width: 769px) and (max-width: 1024px) {
-    /* … */
+    .header__title {
+      margin-left: 3rem;
+    }
+
+    .homepage__title, .userpage__title {
+      text-align: center;
+    }
+    
+    .homepage__text,
+    .userpage__text {
+      font-size: 1rem;
+      color: rgb(248, 250, 252);
+      text-align: center;
+      margin-left: 1rem;
   }
+  .homepage-logo-large {
+    height: 30vmin;
+    position: absolute;
+    top: 50%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+    filter: invert(1);
+    pointer-events: none;
+  }
+}
+
+
+.homepage__signin-button {
+  margin-top: 20rem;
+}
 
   /*large screens*/
   @media (min-width: 1024px) {
-    /* … */
+    .header__title {
+      margin-left: 3rem;
+    }
+
+    .homepage__title, .userpage__title {
+      text-align: center;
+    }
+    
+    .homepage__text,
+    .userpage__text {
+      font-size: 1rem;
+      color: rgb(248, 250, 252);
+      text-align: center;
+      margin-left: 1rem;
+  }
+
+
+.homepage-logo-large {
+  height: 30vmin;
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  filter: invert(1);
+  pointer-events: none;
+}
   }
