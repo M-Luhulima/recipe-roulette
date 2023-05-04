@@ -282,7 +282,7 @@ body {
   
   /* SIGNIN BTN */
   
-  .homepage__signin-container {
+  /* .homepage__signin-container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -291,7 +291,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 16px;
-  }
+  } */
   
   .homepage__signin-button {
     background-color: rgb(77, 179, 181);
@@ -426,10 +426,12 @@ body {
   }
 
 .homepage__signin-container {
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
+  position: relative;
+  top: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -744,6 +746,10 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1)
 }
 
+.quiz__buttons-container {
+  margin-top: 1.5rem;
+}
+
 .errorMessage__text {
   font-style: italic;
   color: rgb(56, 56, 56);
@@ -773,7 +779,6 @@ body {
 }
 }
 
-
   /*laptops*/
   @media (min-width: 769px) and (max-width: 1024px) {
     .header__title {
@@ -800,11 +805,6 @@ body {
     filter: invert(1);
     pointer-events: none;
   }
-}
-
-
-.homepage__signin-button {
-  margin-top: 20rem;
 }
 
   /*large screens*/
