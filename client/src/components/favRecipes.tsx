@@ -42,7 +42,7 @@ const FavRecipes: FC = () => {
       <br/>
       <div ref={ref}></div>
 
-      <section>
+      <section className="favorites__recipe-container">
         {!Array.isArray(favRecipes) ? '' : favRecipes.map((r: IFavoriteRecipe) => (
           <article key={`${r.userId}-${r.recipeId}`} className="favorites__recipe">
             <h2 className="favorites__recipe-title">{r.recipe.title}</h2>
