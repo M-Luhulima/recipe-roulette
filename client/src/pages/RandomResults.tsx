@@ -36,30 +36,34 @@ const RandomResults: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <section className="randomresults">
+    <div>
+      <br /><br />
+      {/* TODO: replace br with css */}
       <button className="randomresult__homepage-button" onClick={handleHomepage}>
         Return to homepage
       </button>
-      <button className="randomresult__getdifferent-button" onClick={handleRandom}>
-        Get a different recipe
-      </button>
-      {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
-        <article key={r.id} className="randomresult">
-          <button className="randomresult__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
-          <h2 className="randomresult__title">{r.title}</h2>
-          <img className="randomresult__image" src={r.image} alt={r.title} />
-          <h3 className="randomresult__ingredients-heading">Ingredients:</h3>
-          <ul className="randomresult__ingredients-list">
-            {r.extendedIngredients.map((i: any) => (
-              <li key={`${r.id}-${i.id}`} className="randomresult__ingredient">{i.original}</li>
-            ))}
-          </ul>
-          <h3 className="randomresult__instructions-heading">Instructions:</h3>
-          <div className="randomresult__instructions" dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
-          <AuthDetails />
-        </article>
-      ))}
-    </section>
+      <section className="randomresults">
+        <button className="randomresult__getdifferent-button" onClick={handleRandom}>
+          Next Recipe
+        </button>
+        {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
+          <article key={r.id} className="randomresult">
+            <button className="randomresult__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save Recipe</button>
+            <h2 className="randomresult__title">{r.title}</h2>
+            <img className="randomresult__image" src={r.image} alt={r.title} />
+            <h3 className="randomresult__ingredients-heading">Ingredients:</h3>
+            <ul className="randomresult__ingredients-list">
+              {r.extendedIngredients.map((i: any) => (
+                <li key={`${r.id}-${i.id}`} className="randomresult__ingredient">{i.original}</li>
+              ))}
+            </ul>
+            <h3 className="randomresult__instructions-heading">Instructions:</h3>
+            <div className="randomresult__instructions" dangerouslySetInnerHTML={{ __html: r.instructions }}></div>
+            <AuthDetails />
+          </article>
+        ))}
+      </section>
+    </div>
   );
 };
 
