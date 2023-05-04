@@ -156,7 +156,7 @@ body {
   }
 } */
 
-.homepage-logo-large {
+/* .homepage-logo-large {
   height: 30vmin;
   position: absolute;
   top: 69%;
@@ -170,16 +170,16 @@ body {
   .homepage-logo-large {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .app-logo {
   height: 28px;
@@ -768,7 +768,7 @@ body {
   text-align: center;
   margin-left: 1rem;
 }
-.homepage-logo-large {
+/* .homepage-logo-large {
   height: 30vmin;
   position: absolute;
   top: 67%;
@@ -776,7 +776,7 @@ body {
   transform: translate(-50%, -50%);
   filter: invert(1);
   pointer-events: none;
-}
+} */
 }
 
   /*laptops*/
@@ -796,7 +796,7 @@ body {
       text-align: center;
       margin-left: 1rem;
   }
-  .homepage-logo-large {
+  /* .homepage-logo-large {
     height: 30vmin;
     position: absolute;
     top: 50%;
@@ -804,7 +804,7 @@ body {
     transform: translate(-50%, -50%);
     filter: invert(1);
     pointer-events: none;
-  }
+  } */
 }
 
   /*large screens*/
@@ -826,7 +826,7 @@ body {
   }
 
 
-.homepage-logo-large {
+/* .homepage-logo-large {
   height: 30vmin;
   position: absolute;
   top: 50%;
@@ -834,5 +834,5 @@ body {
   transform: translate(-50%, -50%);
   filter: invert(1);
   pointer-events: none;
-}
+} */
   }
