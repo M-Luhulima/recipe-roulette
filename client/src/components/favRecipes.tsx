@@ -39,8 +39,10 @@ const FavRecipes: FC = () => {
       <br/>
       <hr className="favorites__line" />
       <br/>
+      <article className="favorites__container">
       <h2 className="favorites__title">Favorite Recipes</h2>
       <button className="favorites__button" onClick={() => handleGetSavedRecipes()}>Show favorite recipes</button>
+      </article>
       <br/>
       <div ref={ref}></div>
 
@@ -51,7 +53,7 @@ const FavRecipes: FC = () => {
             <img className="favorites__recipe-image" src={r.recipe.image} alt={r.recipe.title} />
             <div className="favorites__recipe-buttoncontainer">
             <button className="favorites__recipe-updatebutton" onClick={() => handleUpdateSavedRecipes(r.recipeId, !r.isCooked, '')}>{r.isCooked ? "Not cooked" : "I've cooked it!"}</button>
-            <button className="favorites__recipe-deletebutton" onClick={() => handleDeleteRecipe(r.recipeId)}>Delete recipe</button>
+            <button className="favorites__recipe-deletebutton" onClick={() => handleDeleteRecipe(r.recipeId)}>Remove</button>
             </div>
             <h3 className="favorites__recipe-subtitle">Ingredients:</h3>
             <ul className="favorites__recipe-list">

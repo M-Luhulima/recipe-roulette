@@ -605,7 +605,7 @@ body {
 .randomresult__homepage-button,
 .result__homepage-button, .result__getdifferent-button,.randomresult__getdifferent-button {
   background-color: rgb(253, 254, 255);
-  color: #ff9190;
+  color: rgb(178, 73, 73);
   font-size: 1rem;
   font-weight: bold;
   padding: 0.3rem;
@@ -618,7 +618,6 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.favorites__recipe-title,
 .favorites__recipe-subtitle,
 .favorites__recipe-image,
 .randomresult__title,
@@ -634,7 +633,6 @@ body {
   color: rgb(56, 56, 56);
 }
 
-.favorites__recipe-title,
 .result__title,
 .randomresult__title {
   font-size: 2rem;
@@ -642,10 +640,20 @@ body {
 
 .favorites__recipe-title {
   height: 4.5rem;
+  font-size: 2rem;
+  margin: 1rem 0rem;
+  color: rgb(56, 56, 56);
 }
 
 .favorites__recipe-image {
   border-radius: 5px;
+}
+
+.favorites__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .questions__subtitle {
@@ -722,32 +730,17 @@ body {
 
 .quiz__next-button, .quiz__back-button {
   position: static;
-  font-size: 1.3rem;
-  padding: 0.4rem 0.7rem;
+  font-size: 1.2rem;
+  text-decoration: bold;
+  padding: 0.3rem 0.8rem;
   margin: -15rem 1rem 1rem 1rem;
-  color: #ff9190;
+  color: #e16d79;
   background-color: rgb(248, 250, 252, 0.5);
   border: none;
   border-radius: 20px;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1)
 }
-
-/* .favorites__recipe-updatebutton,
-.favorites__recipe-deletebutton {
-  background-color: rgb(248, 250, 252);
-  color: #ff9190;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.3rem;
-  border: none;
-  border-radius: 20px;
-  margin-top: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 0.7rem;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-} */
 
   /*tablets*/
 @media (min-width: 481px) and (max-width: 768px) {
