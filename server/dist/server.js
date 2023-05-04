@@ -35,7 +35,7 @@ const routes_1 = __importDefault(require("./routes/routes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const app_1 = require("firebase-admin/app");
 const auth_1 = require("firebase-admin/auth");
-const serviceAccount = __importStar(require("./service-account.json"));
+const serviceAccount = __importStar(require("../service-account.json"));
 (0, app_1.initializeApp)({
     credential: admin.credential.cert(serviceAccount),
 });

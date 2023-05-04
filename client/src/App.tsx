@@ -9,6 +9,7 @@ import RandomResults from "./pages/RandomResults";
 import UserPage from "./pages/UserPage";
 import "./App.css";
 
+
 const App: FC = () => {
   return (
     <main className="recipe-roulette">

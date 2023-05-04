@@ -7,6 +7,7 @@ import SignUp from "../components/auth/signUp";
 import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
+import logoIcon from '../../src/assets/images/logoIcon.png';
 
 const HomePage: FC = () => {
   const navigate = useNavigate();
@@ -51,6 +52,8 @@ const HomePage: FC = () => {
 
   return (
     <section className="homepage">
+            {/* <img src={logoIcon} className="homepage-logo" alt="logoIcon" /> */}
+            <img src={logoIcon} className="homepage-logo-large" alt="logoIcon" />
       <h1 className="homepage__title">What are we eating today ?</h1>
       <p className="homepage__text">Click the button to get a random recipe or answer a couple of short questions to get a recipe to match your appetite!</p>
       <article className="homepage__buttons-container">
