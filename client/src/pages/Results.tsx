@@ -44,15 +44,15 @@ const Results: React.FC = () => {
       <br /><br />
       {/* TODO: replace br with css */}
       <button className="result__homepage-button" onClick={handleHomepage}>
-        Return to homepage
+        Return to home
       </button>
       <section className="results">
-        <button className="result__homepage-button" onClick={handleRedo}>
-          Skip recipe
+        <button className="result__getdifferent-button" onClick={handleRedo}>
+          Next
         </button>
         {!Array.isArray(recipes) ? '' : recipes.map((r: any) => (
           <article key={r.id} className="result">
-            <button className="result__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save recipe</button>
+            <button className="result__save-button" onClick={() => handleSaveRecipe(r.id, r)}>Save</button>
             <h2 className="result__title">{r.title}</h2>
             <img className="result__image" src={r.image} alt={r.title} />
             <h3 className="result__ingredients-heading">Ingredients:</h3>

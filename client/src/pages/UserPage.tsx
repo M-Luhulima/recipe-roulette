@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import FavRecipes from "../components/favRecipes";
-import AuthDetails from "../components/auth/authDetails";
+// import AuthDetails from "../components/auth/authDetails";
 
 const UserPage: FC = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const UserPage: FC = () => {
           Get random recipe
         </button>
         <FavRecipes />
-        <AuthDetails />
+        {/* <AuthDetails /> */}
       </article>
     </section>
   )

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logoIcon from '../../src/assets/images/logoIcon.png';
+import AuthDetails from "../components/auth/authDetails";
 
 // check of qua styling iets met header__content wordt gedaan
 
@@ -11,6 +12,7 @@ const Header: React.FC = () => {
         <Link className="header__link" to="/">
           <h1 className="header__title">Recipe Roulette</h1>
         </Link>
+        <AuthDetails />
       </article>
     </header>
   );

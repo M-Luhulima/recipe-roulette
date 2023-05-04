@@ -4,7 +4,7 @@ import { getRecipeRandom } from "../store/reducers/recipesReducer";
 import { AppDispatch, useRecipeDispatch } from "../store/store";
 import SignIn from "../components/auth/signIn";
 import SignUp from "../components/auth/signUp";
-import AuthDetails from "../components/auth/authDetails";
+// import AuthDetails from "../components/auth/authDetails";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import "../App.css";
 import logoIcon from '../../src/assets/images/logoIcon.png';
@@ -78,7 +78,7 @@ const HomePage: FC = () => {
           </button>
           {isSignUpOpen && <SignUp onClose={handleSignUpClose} />}
         </article> */}
-        <AuthDetails />
+        {/* <AuthDetails /> */}
       </article>
     </section>
   );

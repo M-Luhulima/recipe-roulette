@@ -36,7 +36,9 @@ const FavRecipes: FC = () => {
 
   return (
     <section className="favorites">
-      <hr className="favorites__line"></hr>
+      <br/>
+      <hr className="favorites__line" />
+      <br/>
       <h2 className="favorites__title">Favorite Recipes</h2>
       <button className="favorites__button" onClick={() => handleGetSavedRecipes()}>Show favorite recipes</button>
       <br/>
@@ -47,9 +49,10 @@ const FavRecipes: FC = () => {
           <article key={`${r.userId}-${r.recipeId}`} className="favorites__recipe">
             <h2 className="favorites__recipe-title">{r.recipe.title}</h2>
             <img className="favorites__recipe-image" src={r.recipe.image} alt={r.recipe.title} />
-            <p className="favorites__recipe-status">{r.isCooked ? "You've tried this recipe! Worth repeating?" : "You want to try this recipe!"}</p>
-            <button className="favorites__recipe-updatebutton" onClick={() => handleUpdateSavedRecipes(r.recipeId, !r.isCooked, '')}>{r.isCooked ? "Remind me again" : "I've cooked it!"}</button>
+            <div className="favorites__recipe-buttoncontainer">
+            <button className="favorites__recipe-updatebutton" onClick={() => handleUpdateSavedRecipes(r.recipeId, !r.isCooked, '')}>{r.isCooked ? "Not cooked" : "I've cooked it!"}</button>
             <button className="favorites__recipe-deletebutton" onClick={() => handleDeleteRecipe(r.recipeId)}>Delete recipe</button>
+            </div>
             <h3 className="favorites__recipe-subtitle">Ingredients:</h3>
             <ul className="favorites__recipe-list">
               {r.recipe.extendedIngredients.map((i: any) => (
