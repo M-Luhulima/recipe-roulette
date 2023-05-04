@@ -69,7 +69,7 @@ export interface RecipeInformation {
 }
 
 // API call 1 random recipe
-export const getRandomRecipeFromApi2 = async (): Promise<Recipe> => {
+export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
   console.log('SPOONACULAR_API: ', process.env.SPOONACULAR_API);
   const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API}&number=1`);
   console.log('getRandomRecipeFromAPi response.data: ', response.data);
@@ -188,7 +188,7 @@ const mockResult = [
     spoonacularSourceUrl: 'https://spoonacular.com/berry-banana-breakfast-smoothie-715497'
   }
 ]
-export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intolerances?: string): Promise<Recipe[]> => {
+export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string): Promise<Recipe[]> => {
   const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
     params: {
       apiKey: process.env.SPOONACULAR_API,
@@ -221,13 +221,13 @@ export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intol
 };
 
 // TODO: turn off mock api response, change name at 191 to getQuizRecipesFromApi2 and change name at 72 to getQuizRecipesFromApi
-export const getQuizRecipesFromApi = async (type?: string, diet?: string, intolerances?: string): Promise<RecipeInformation[]> => {
+export const getQuizRecipesFromApi2 = async (type?: string, diet?: string, intolerances?: string): Promise<RecipeInformation[]> => {
   const random = mockResult[Math.floor(Math.random() * mockResult.length)];
   return [random];
 };
 
 // also do this rename for this api
-export const getRandomRecipeFromApi = async (): Promise<Recipe> => {
+export const getRandomRecipeFromApi2 = async (): Promise<Recipe> => {
   const random = mockResult[Math.floor(Math.random() * mockResult.length)];
   return random as unknown as Recipe;
 };
