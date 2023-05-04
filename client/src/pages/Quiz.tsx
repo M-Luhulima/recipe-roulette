@@ -58,7 +58,7 @@ const Quiz: FC = () => {
       {answers.join(' - ')}
       <br/>
       <button className="quiz__quit-button" onClick={handleHomepage}>
-          X
+          Quit Quiz
         </button>
 <article className="quiz__buttons-container">
       {currentQuestion > 0 ? <button className="quiz__back-button"onClick={handleBack}>Back</button> : ''}
