@@ -47,6 +47,9 @@ const Quiz: FC = () => {
 
   return (
     <section className="quiz">
+      <button className="quiz__quit-button" onClick={handleHomepage}>
+          X
+        </button>
       <Questions
         question={quizData[currentQuestion].question}
         options={quizData[currentQuestion].options}
@@ -57,9 +60,6 @@ const Quiz: FC = () => {
       <br/>
       {answers.join(' - ')}
       <br/>
-      <button className="quiz__quit-button" onClick={handleHomepage}>
-          Quit Quiz
-        </button>
 <article className="quiz__buttons-container">
       {currentQuestion > 0 ? <button className="quiz__back-button"onClick={handleBack}>Back</button> : ''}
       <button className="quiz__next-button" onClick={handleNext}>Next</button>
