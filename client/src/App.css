@@ -93,7 +93,7 @@ body {
 .header {
 	position: fixed;
 	top: 0;
-	background-color: rgba(238, 238, 238, 0.8);
+	background-color: rgba(248, 248, 248, 0.4);
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -102,6 +102,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 }
+
 
 /* 
 .header.scroll {
@@ -116,7 +117,7 @@ body {
 }
 
 .header__title {
-	color: rgb(206, 109, 109);
+	color: rgb(212, 85, 110);
 	font-size: 20px;
 	font-weight: bold;
 }
@@ -127,6 +128,67 @@ body {
 	font-size: 17px;
 	margin-right: 20px;
 }
+
+/* HEADERLOGO */
+.homepage-logo {
+  height: 20vmin;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  filter: invert(1);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.homepage-logo-large {
+  height: 30vmin;
+  position: absolute;
+  top: 69%;
+  left: 34%;
+  transform: translate(-50%, -50%);
+  filter: invert(1);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .homepage-logo-large {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-logo {
+  height: 9vmin;
+  position: absolute;
+  top: 18%;
+  left: 1%;
+  opacity: 0.5; /* change the value to make it more or less transparent */
+}
+
+
 
 /* FOOTER */
 
@@ -223,13 +285,14 @@ body {
   }
   
   .homepage__signin-button, .auth__signout-btn, .quiz__quit-button {
-    background-color: rgb(220, 220, 220);
-    color: rgb(113, 113, 113);
+    background-color: rgb(77, 179, 181);
+    color: rgb(255, 255, 255);
+    text-decoration: bold;
     font-size: 1.2rem;
     font-weight: normal;
-    padding: 0.3rem 1.2rem;
+    padding: 0.3rem 1.1rem;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     margin-right: 1rem;
     margin-bottom: 3rem;
     cursor: pointer;
@@ -279,7 +342,7 @@ body {
   }
   
   .signin-popup__signin-button {
-	background-color: #1d8296;
+	background-color: #126171;
 	color: white;
 	padding: 10px 20px;
 	border: none;
